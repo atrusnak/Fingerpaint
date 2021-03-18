@@ -36,7 +36,8 @@ Fingerpaint.prototype.login = function(){
   if(firebase.auth().currentUser != null){
 
       //todo: send to home page since logged in. 
-      //console.log("Bottom of login");
+      console.log("Bottom of login");
+      window.location.href ="home.html"
   }
 
 }
