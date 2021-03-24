@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Home View</title>
+    <title>Account View</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,31 +23,21 @@
     <form class="form-inline">
         <div class="form-group">
             <button id="profile"><img src="groot.png" width="40" height="50"/></button>
-            <small id="finger" class="text-muted"><h1>FINGERPAINT</h1></small>
-            <button id="plus"><h1>+</h1></button>
+            <small id="finger"><h1>FINGERPAINT</h1></small>
         </div>
     </form>
-    <table class="table table-striped table-inverse table-responsive">
-        <thead class="thead-inverse">
+    <div class="setting">
+        <div class="list">
+            <h3>User Name:<Iam Groot/h3>
+            <h3>User password: Groot is my password</h3>
+            <h3 >Profile Picture:</h3>
+            <img src="groot.png" id="proPic" width="100" height="100" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="groot image">
+        </div>
 
-            </thead>
 
-            <tbody>
-                <tr>
-                    <td scope="row"></td>
-                    <td><button id="profile"><img src="draw1.jpg" width="150" height="150"/></button></td>
-                    <td><button id="profile"><img src="draw2.jpg" width="150" height="150"/></button></td>
-                    <td><button id="profile"><img src="draw3.jpg" width="150" height="150"/></button></td>
-                    <td><button id="profile"><img src="draw4.jpg" width="150" height="150"/></button></td>
-                </tr>
-                <tr>
-                    <td scope="row"></td>
-                    <td><button id="profile"><img src="draw4.jpg" width="150" height="150"/></button></td>
-                    <td><button id="profile"><img src="draw3.jpg" width="150" height="150"/></button></td>
-                    <td><button id="profile"><img src="draw2.jpg" width="150" height="150"/></button></td>
-                    <td><button id="profile"><img src="draw1.jpg" width="150" height="150"/></button></td>
-                </tr>
-            </tbody>
-    </table>
+        <button type="button" name="b1" id="changePassword" class="btn btn-primary" btn-lg btn-block">Change Password</button>
+        <button type="button" name="b1" id="changeUserName" class="btn btn-primary" btn-lg btn-block">Change Username</button>
+        <button type="button" name="b1" id="changePicture" class="btn btn-primary" btn-lg btn-block">Change Profile Picture</button>
+    </div>
   </body>
 </html>

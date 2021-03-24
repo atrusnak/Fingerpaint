@@ -1,0 +1,42 @@
+.form-group{
+  width: 100%;
+  padding-top: 2%;
+}
+
+#profile{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#plus{
+  background-color: transparent;
+}
+
+#finger{
+  color: black;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.setting{
+  margin-left: 10%;
+  margin-top: 10%;
+}
+
+.btn {
+  margin-top: 3%;
+  width: 50%;
+  margin-left: 25%;
+}
+.list{
+  margin-left: 20%;
+}
+
+.table{
+  margin-left: 20%;  
+  margin-top: 10%;
+}
+
+#proPic{
+  margin-left: 17%;
+}
