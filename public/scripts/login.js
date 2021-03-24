@@ -10,7 +10,7 @@
 //init
 Fingerpaint.prototype.initsetup = function() {
   var config = this.getFirebaseConfig();
-  document.getElementById("login").style.display = "block"; //should pop up login screen
+  window.location='index.html';
 };
 
 
@@ -107,9 +107,15 @@ Fingerpaint.prototype.edit = function(){
 
 //5. logout. we don't need this
 Fingerpaint.prototype.logout = function(){
-  if(firebase.auth().currentUser != null){
-    firebase.auth().signOut();
-  }
+  
+    firebase.auth().signOut().then(() => {
+      console.log("logout");
+      window.location="/index.html";
+    }).catch((error) => {
+
+    });
+    
+  
 }
 
 
