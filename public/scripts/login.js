@@ -22,7 +22,8 @@ Fingerpaint.prototype.login = function(){
   var userEmail = document.getElementById("inputEmail").value;
   var userPass = document.getElementById("inputPassword").value;
 
-  //console.log("login: before firebase add");
+  // console.log("login: before firebase add");
+  // console.log("yes");
   
   firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
     // Handle Errors here.
@@ -74,22 +75,7 @@ Fingerpaint.prototype.edit = function(){
   if(firebase.auth().currentUser != null){
     var userEmail = document.getElementById("email_field").value;
     var userPass = document.getElementById("password_field").value;
-    var address = document.getElementById("address_field").value;
-    var phone = document.getElementById("phone_field").value;
     var old_pass = document.getElementById("old_password_field").value;
-
-    if(address){
-     const uid = firebase.auth().currentUser.uid;
-      const userData = {user_address: address};     
-      firebase.firestore().doc('/users/'+uid).set(userData, {merge: true});
-    }
-
-    if(phone){
-      const uid = firebase.auth().currentUser.uid;
-      const userData = {user_phone: phone};        
-      firebase.firestore().doc('/users/'+uid).set(userData, {merge: true});
-    }
-
     //Now need ability to change username and password.
     console.log("Before change password and email");
     console.log(firebase.auth().currentUser.password);
@@ -110,7 +96,7 @@ Fingerpaint.prototype.logout = function(){
   
     firebase.auth().signOut().then(() => {
       console.log("logout");
-      window.location="/index.html";
+      window.location.href="/index.html";
     }).catch((error) => {
 
     });

@@ -4,8 +4,8 @@
 // import "firebase/auth";
 // import "firebase/firestore";
 
-// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// var firebaseConfig = {
 //   apiKey: "AIzaSyBxDI2F_zEe31DlR-dEC9K0rIQAyb4grhY",
 //   authDomain: "fingerpaint-7b504.firebaseapp.com",
 //   projectId: "fingerpaint-7b504",
@@ -15,4 +15,4 @@
 //   measurementId: "G-3MQRDQBTS8"
 // };
 
-// firebase.initializeApp(firebaseConfig);
+//firebase.initializeApp(firebaseConfig);
