@@ -40,3 +40,22 @@
 #proPic{
   margin-left: 17%;
 }
+
+.drawtable{
+  margin-left: 0%;
+  width: 110px;
+  background-color: #CC3385;
+}
+
+.iconify{
+  margin-top: 35%;
+  margin-left:30%;
+  padding-right: 10%;
+}
+#undo{
+padding-right:30%;
+margin-bottom:-25%;
+}
+#redo{
+  padding-right:30%; 
+}
