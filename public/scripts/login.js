@@ -67,11 +67,12 @@ Fingerpaint.prototype.create = function(){
       window.alert("Error : " + errorMessage);
     });
     
-    if(firebase.auth().currentUser != null){
-
-      //now send to home screen of logged in user. 
-      
-    }
+    firebase.auth().onAuthStateChanged(function(user) { 
+    
+      if (user != null) { //then user is not null, don't need to log in. 
+      window.location.href ="home.html";
+      } 
+    })
   }
 }
 
