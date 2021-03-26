@@ -382,6 +382,20 @@ function onDocumentMouseMove(event) {
 
 var intersects = [];
 
+var start_pinch_x, start_pinch_y, end_x, end_y;
+var selected;
+
+start_pinch_x = currentMidpoint.x;
+start_pinch_y = currentMidpoint.y;
+
+var point = new THREE.Vector3 (0,0,0);
+var geometry = new THREE.Geometry();
+var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 10 } );
+geometry.vertices.push (point);
+var bline = new THREE.Line (geometry, strokeMaterial);
+scene.add(bline);
+selected = bline;
+
 function render() {
   //set raycast intersections empty
   intersects = [];
@@ -391,6 +405,15 @@ function render() {
 
     //check pinch
     if (pinch) {
+        var line = selected;
+        var point = new THREE.Vector3 (currentMidpoint.x,currentMidpoint.y,0);
+        var oldgeometry = line.geometry;
+        var newgeometry = new THREE.Geometry();
+        newgeometry.vertices = oldgeometry.vertices;
+        newgeometry.vertices.push (point);
+        line.geometry = newgeometry;
+        selected = line;
+
       /*console.log(
           "object x, y: " +
             INTERSECTED.position.x +
@@ -410,8 +433,20 @@ function render() {
         if ("position" in INTERSECTED) {
           INTERSECTED.position.x = currentMidpoint.x;
           INTERSECTED.position.y = currentMidpoint.y;
+
+          var point = new THREE.Vector3 (start_pinch_x,start_pinch_y,0);
+          var geometry = new THREE.Geometry();
+          var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 10 } );
+          geometry.vertices.push (point);
+          var line = new THREE.Line (geometry, strokeMaterial);
+          scene.add(line);
+          selected = line;
         }
       }
+    }
+    else {
+      start_pinch_x = null;
+      start_pinch_y = null;
     }
     //handpose model
     handposeModel.estimateHands(capture).then(function(_hands) {
