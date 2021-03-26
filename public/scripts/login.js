@@ -34,12 +34,18 @@ Fingerpaint.prototype.login = function(){
 
   });
 
-  if(firebase.auth().currentUser != null){
+  // if(firebase.auth().currentUser != null){
 
-      //todo: send to home page since logged in. 
-      console.log("Bottom of login");
-      window.location.href ="home.html"
-  }
+  //     //todo: send to home page since logged in. 
+  //     console.log("Bottom of login");
+  //     window.location.href ="home.html"
+  // }
+  firebase.auth().onAuthStateChanged(function(user) { 
+    
+  if (user != null) { //then user is not null, don't need to log in. 
+  window.location.href ="home.html";
+  } 
+})
 
 }
 
