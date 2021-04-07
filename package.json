@@ -14,9 +14,13 @@
     "Fingertracking"
   ],
   "author": "Adam Azmil, Alexander Ionkov, Alexander Rusnak, Sam Wagner, Mohammed Sheriff Issaka, Tejvir Mann",
-  "license": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/atrusnak/Fingerpaint/issues"
   },
-  "homepage": "https://github.com/atrusnak/Fingerpaint#readme"
+  "homepage": "https://github.com/atrusnak/Fingerpaint#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2"
+  }
 }
