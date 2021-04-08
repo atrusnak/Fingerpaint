@@ -33,8 +33,8 @@
     </script>
     <form class="form-inline">
         <div class="form-group">
-            <button type=button id="profile"><img src="groot.png" width="40" height="50"/></button>
-            <small id="finger" onclick = "Fingerpaint.prototype.goToHome()"><h1>FINGERPAINT</h1></small>
+            <div id = title_container></div>
+            <!-- <small id="finger" onclick = "Fingerpaint.prototype.goToHome()"><h1>FINGERPAINT</h1></small> -->
         </div>
     </form>
     <div class="setting">
@@ -43,13 +43,18 @@
             <h3 >Profile Picture:</h3>
             <img src="groot.png" id="proPic" width="100" height="100" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="groot image">
         </div>
-        <button type="button" name="b1" id="changePassword" class="btn btn-primary" btn-lg btn-block">Change Password</button>
-        <button type="button" name="b1" id="changeUserName" class="btn btn-primary" btn-lg btn-block">Change Username</button>
-        <button type="button" name="b1" id="changePicture" class="btn btn-primary" btn-lg btn-block">Change Profile Picture</button>
-        <button type="button" onclick = "Fingerpaint.prototype.logout()" name="n1" id="logout" class="btn btn-primary" btn-lg btn-block">Logout</button>
+        <div id="account_function_container"></div>
+        <!-- <button type="button" name="b1" id="changePassword" class="btn btn-primary" btn-lg btn-block>Change Password</button> -->
+        <!-- <button type="button" name="b1" id="changeUserName" class="btn btn-primary" btn-lg btn-block>Change Username</button> -->
+        <!-- <button type="button" name="b1" id="changePicture" class="btn btn-primary" btn-lg btn-block>Change Profile Picture</button> -->
+        <!-- <button type="button" onclick = "Fingerpaint.prototype.logout()" name="n1" id="logout" class="btn btn-primary" btn-lg btn-block>Logout</button> -->
     </div>
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
+    <script>var Alert = ReactBootstrap.Alert;</script>
     <!-- Load our React component. -->
+    <script src="src/account.js"></script>
+    <script src="src/title.js"></script>
   </body>
 </html>

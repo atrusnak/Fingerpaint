@@ -3,10 +3,11 @@ class Title extends React.Component {
 
     render(){
         const mysytle= {
-            padding: '2000',
+            padding: '300',
+            cursor: 'pointer',
         };
         return(
-            <small id="finger" style={mysytle} className="text-muted"><h1>FINGERPAINT</h1></small>
+            <small id="finger" style={mysytle} className="text-muted" onClick = {() => Fingerpaint.prototype.goToHome()}><h1>FINGERPAINT</h1></small>
         );
     }
 }

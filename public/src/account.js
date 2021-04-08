@@ -8,42 +8,53 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Title = function (_React$Component) {
-    _inherits(Title, _React$Component);
+var Account = function (_React$Component) {
+    _inherits(Account, _React$Component);
 
-    function Title() {
-        _classCallCheck(this, Title);
+    function Account() {
+        _classCallCheck(this, Account);
 
-        return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Account.__proto__ || Object.getPrototypeOf(Account)).apply(this, arguments));
     }
 
-    _createClass(Title, [{
-        key: 'render',
+    _createClass(Account, [{
+        key: "render",
         value: function render() {
-            var mysytle = {
-                padding: '300',
-                cursor: 'pointer'
-            };
             return React.createElement(
-                'small',
-                { id: 'finger', style: mysytle, className: 'text-muted', onClick: function onClick() {
-                        return Fingerpaint.prototype.goToHome();
-                    } },
+                "div",
+                null,
                 React.createElement(
-                    'h1',
-                    null,
-                    'FINGERPAINT'
+                    "button",
+                    { type: "button", name: "b1", id: "changeUserName", "class": "btn btn-primary", "btn-lg": true, "btn-block": true },
+                    "Change Username"
+                ),
+                React.createElement(
+                    "button",
+                    { type: "button", name: "b1", id: "changePassword", "class": "btn btn-primary", "btn-lg": true, "btn-block": true },
+                    "Change Password"
+                ),
+                React.createElement(
+                    "button",
+                    { type: "button", name: "b1", id: "changePicture", "class": "btn btn-primary", "btn-lg": true, "btn-block": true },
+                    "Change Profile Picture"
+                ),
+                React.createElement(
+                    "button",
+                    { type: "button", onClick: function onClick() {
+                            return Fingerpaint.prototype.logout();
+                        }, name: "n1", id: "logout", "class": "btn btn-primary", "btn-lg": true, "btn-block": true },
+                    "Logout"
                 )
             );
         }
     }]);
 
-    return Title;
+    return Account;
 }(React.Component);
 
-var titleContainer = document.querySelector('#title_container');
+var accountContainer = document.querySelector('#account_function_container');
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        ReactDOM.render(React.createElement(Title, null), titleContainer);
+        ReactDOM.render(React.createElement(Account, null), accountContainer);
     }
 });
