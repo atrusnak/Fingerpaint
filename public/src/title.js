@@ -18,15 +18,18 @@ var Title = function (_React$Component) {
     }
 
     _createClass(Title, [{
-        key: "render",
+        key: 'render',
         value: function render() {
+            var mysytle = {
+                padding: '2000'
+            };
             return React.createElement(
-                "small",
-                { id: "finger", className: "text-muted" },
+                'small',
+                { id: 'finger', style: mysytle, className: 'text-muted' },
                 React.createElement(
-                    "h1",
+                    'h1',
                     null,
-                    "FINGERPAINT"
+                    'FINGERPAINT'
                 )
             );
         }

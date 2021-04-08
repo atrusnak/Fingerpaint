@@ -2,8 +2,11 @@
 class Title extends React.Component {
 
     render(){
+        const mysytle= {
+            padding: '2000',
+        };
         return(
-            <small id="finger" className="text-muted"><h1>FINGERPAINT</h1></small>
+            <small id="finger" style={mysytle} className="text-muted"><h1>FINGERPAINT</h1></small>
         );
     }
 }

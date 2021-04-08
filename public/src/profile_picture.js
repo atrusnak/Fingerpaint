@@ -18,6 +18,7 @@ var ProfilePicture = function (_React$Component) {
     _createClass(ProfilePicture, [{
         key: "render",
         value: function render() {
+
             return React.createElement(
                 "a",
                 { className: "anchorButton", id: "profile", onClick: function onClick() {
