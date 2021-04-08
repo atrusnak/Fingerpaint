@@ -32,16 +32,16 @@
         }
       });
     </script>
-  <div id = nav_bar_container>
-    <!-- <form class="form-inline">
+  <div>
+    <form class="form-inline">
         <div class="form-group">
-            <button type=button id="profile" onclick = "Fingerpaint.prototype.goToAccount()"><img src="groot.png" width="40" height="50"/></button>
-            <small id="finger" class="text-muted"><h1>FINGERPAINT</h1></small>
-            <button type=button id="plus" onclick = "Fingerpaint.prototype.goToDraw()"><h1>+</h1></button>
+            <!-- <button type=button id="profile" onclick = "Fingerpaint.prototype.goToAccount()"><img src="groot.png" width="40" height="50"/></button> -->
+            <div id= profile_picture_container></div>
+            <!-- <small id="finger" class="text-muted"><h1>FINGERPAINT</h1></small>
+            <button type=button id="plus" onclick = "Fingerpaint.prototype.goToDraw()"><h1>+</h1></button> -->
         </div>
-    </form> -->
+    </form>
   </div>
-  <div id="like_button_container"></div>
     <table class="table table-striped table-inverse table-responsive">
         <thead class="thead-inverse">
 
@@ -68,7 +68,6 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <!-- Load our React component. -->
-  <script src="src/nav_bar.js"></script>
-  <script type ="text/babel" src="src/like_button.js"></script>
+  <script src="src/profile_picture.js"></script>
   </body>
 </html>

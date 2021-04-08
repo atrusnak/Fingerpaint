@@ -8,39 +8,36 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var LikeButton = function (_React$Component) {
-  _inherits(LikeButton, _React$Component);
+var Title = function (_React$Component) {
+    _inherits(Title, _React$Component);
 
-  function LikeButton(props) {
-    _classCallCheck(this, LikeButton);
+    function Title() {
+        _classCallCheck(this, Title);
 
-    var _this = _possibleConstructorReturn(this, (LikeButton.__proto__ || Object.getPrototypeOf(LikeButton)).call(this, props));
-
-    _this.state = { liked: false };
-    return _this;
-  }
-
-  _createClass(LikeButton, [{
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      if (this.state.liked) {
-        return 'You liked this.';
-      }
-
-      return React.createElement(
-        'button',
-        { onClick: function onClick() {
-            return _this2.setState({ liked: true });
-          } },
-        'Like'
-      );
+        return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).apply(this, arguments));
     }
-  }]);
 
-  return LikeButton;
+    _createClass(Title, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "small",
+                { id: "finger", className: "text-muted" },
+                React.createElement(
+                    "h1",
+                    null,
+                    "FINGERPAINT"
+                )
+            );
+        }
+    }]);
+
+    return Title;
 }(React.Component);
 
-var domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(React.createElement(LikeButton, null), domContainer);
+var domContainer = document.querySelector('#title_container');
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        ReactDOM.render(React.createElement(Title, null), domContainer);
+    }
+});
