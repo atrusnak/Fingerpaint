@@ -7,9 +7,9 @@ class Title extends React.Component {
         );
     }
 }
-let domContainer = document.querySelector('#title_container');
+let titleContainer = document.querySelector('#title_container');
 firebase.auth().onAuthStateChanged(function(user){
     if (user){
-        ReactDOM.render(<Title />, domContainer);
+        ReactDOM.render(<Title />, titleContainer);
     }
   });

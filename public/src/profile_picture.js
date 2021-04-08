@@ -31,9 +31,9 @@ var ProfilePicture = function (_React$Component) {
     return ProfilePicture;
 }(React.Component);
 
-var domContainer = document.querySelector('#profile_picture_container');
+var profilePicContainer = document.querySelector('#profile_picture_container');
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        ReactDOM.render(React.createElement(ProfilePicture, null), domContainer);
+        ReactDOM.render(React.createElement(ProfilePicture, null), profilePicContainer);
     }
 });

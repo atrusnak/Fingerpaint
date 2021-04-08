@@ -6,9 +6,9 @@ class ProfilePicture extends React.Component {
         );
     }
 }
-let domContainer = document.querySelector('#profile_picture_container');
+let profilePicContainer = document.querySelector('#profile_picture_container');
 firebase.auth().onAuthStateChanged(function(user){
     if (user){
-        ReactDOM.render(<ProfilePicture />, domContainer);
+        ReactDOM.render(<ProfilePicture />, profilePicContainer);
     }
   });
