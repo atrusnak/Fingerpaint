@@ -79,7 +79,9 @@ Fingerpaint.prototype.create = function(){
 Fingerpaint.prototype.edit = function(){
   var that = this;
 
-  if(firebase.auth().currentUser != null){
+  firebase.auth().onAuthStateChanged(function(user){
+
+    if (user!=null) {
     var userEmail = document.getElementById("email_field").value;
     var userPass = document.getElementById("password_field").value;
     var old_pass = document.getElementById("old_password_field").value;
@@ -92,11 +94,24 @@ Fingerpaint.prototype.edit = function(){
         userCredential.user.updateEmail(userEmail);
         userCredential.user.updatePassword(userPass);
     })
-
-
   }
-  
+
+  })
 }
+Fingerpaint.prototype.resetPassword = function(){
+  var auth = firebase.auth();
+  var userEmail = document.getElementById("inputEmail").value;
+
+  auth.sendPasswordResetEmail(userEmail).then(function(){
+  location.reload();  
+  }).catch(function(error){
+
+  });
+  console.log("resetPassword");
+}
+  
+  
+
 
 //5. logout. we don't need this
 Fingerpaint.prototype.logout = function(){
