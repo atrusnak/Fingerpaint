@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/atrusnak/Fingerpaint/issues"
   },
-  "homepage": "https://github.com/atrusnak/Fingerpaint#readme"
+  "homepage": "https://github.com/atrusnak/Fingerpaint#readme",
+  "dependencies": {
+    "fingerpose": "0.0.2"
+  }
 }
