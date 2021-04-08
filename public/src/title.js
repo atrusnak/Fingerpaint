@@ -22,7 +22,8 @@ var Title = function (_React$Component) {
         value: function render() {
             var mysytle = {
                 padding: '300',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                marginWidth: '300'
             };
             return React.createElement(
                 'small',

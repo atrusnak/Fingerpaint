@@ -25,24 +25,24 @@ var Account = function (_React$Component) {
                 null,
                 React.createElement(
                     "button",
-                    { type: "button", name: "b1", id: "changeUserName", "class": "btn btn-primary", "btn-lg": true, "btn-block": true },
+                    { type: "button", id: "changeUserName", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true" },
                     "Change Username"
                 ),
                 React.createElement(
                     "button",
-                    { type: "button", name: "b1", id: "changePassword", "class": "btn btn-primary", "btn-lg": true, "btn-block": true },
+                    { type: "button", id: "changePassword", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true" },
                     "Change Password"
                 ),
                 React.createElement(
                     "button",
-                    { type: "button", name: "b1", id: "changePicture", "class": "btn btn-primary", "btn-lg": true, "btn-block": true },
+                    { type: "button", id: "changePicture", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true" },
                     "Change Profile Picture"
                 ),
                 React.createElement(
                     "button",
                     { type: "button", onClick: function onClick() {
                             return Fingerpaint.prototype.logout();
-                        }, name: "n1", id: "logout", "class": "btn btn-primary", "btn-lg": true, "btn-block": true },
+                        }, name: "n1", id: "logout", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true" },
                     "Logout"
                 )
             );

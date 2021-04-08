@@ -4,10 +4,10 @@ class Account extends React.Component {
     render(){
         return(
             <div>
-              <button type="button" name="b1" id="changeUserName" class="btn btn-primary" btn-lg btn-block>Change Username</button>
-              <button type="button" name="b1" id="changePassword" class="btn btn-primary" btn-lg btn-block>Change Password</button>
-              <button type="button" name="b1" id="changePicture" class="btn btn-primary" btn-lg btn-block>Change Profile Picture</button>
-              <button type="button" onClick = {() => Fingerpaint.prototype.logout()} name="n1" id="logout" class="btn btn-primary" btn-lg btn-block>Logout</button>
+              <button type="button" id="changeUserName" className="btn btn-primary" btn-lg="true" btn-block="true">Change Username</button>
+              <button type="button" id="changePassword" className="btn btn-primary" btn-lg="true" btn-block="true">Change Password</button>
+              <button type="button" id="changePicture" className="btn btn-primary" btn-lg="true" btn-block="true">Change Profile Picture</button>
+              <button type="button" onClick = {() => Fingerpaint.prototype.logout()} name="n1" id="logout" className="btn btn-primary" btn-lg="true" btn-block="true">Logout</button>
             </div>
         );
     }

@@ -5,6 +5,7 @@ class Title extends React.Component {
         const mysytle= {
             padding: '300',
             cursor: 'pointer',
+            marginWidth: '300',
         };
         return(
             <small id="finger" style={mysytle} className="text-muted" onClick = {() => Fingerpaint.prototype.goToHome()}><h1>FINGERPAINT</h1></small>
