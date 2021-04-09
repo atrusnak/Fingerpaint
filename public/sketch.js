@@ -391,10 +391,11 @@ start_pinch_y = currentMidpoint.y;
 var point = new THREE.Vector3 (0,0,0);
 var geometry = new THREE.Geometry();
 var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 10 } );
-geometry.vertices.push (point);
+geometry.vertices.push(point);
 var bline = new THREE.Line (geometry, strokeMaterial);
 scene.add(bline);
 selected = bline;
+var cursor_history = new Array();
 
 function render() {
   //set raycast intersections empty
@@ -405,6 +406,16 @@ function render() {
 
     //check pinch
     if (pinch) {
+        if (selected == null) {
+          let lastpoint = cursor_history[cursor_history.length-1];
+          var point = new THREE.Vector3 (lastpoint[0],lastpoint[1],0);
+          var geometry = new THREE.Geometry();
+          var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 10 } );
+          geometry.vertices.push (point);
+          var bline = new THREE.Line (geometry, strokeMaterial);
+          scene.add(bline);
+          selected = bline;
+        }
         var line = selected;
         var point = new THREE.Vector3 (currentMidpoint.x,currentMidpoint.y,0);
         var oldgeometry = line.geometry;
@@ -434,19 +445,23 @@ function render() {
           INTERSECTED.position.x = currentMidpoint.x;
           INTERSECTED.position.y = currentMidpoint.y;
 
-          var point = new THREE.Vector3 (start_pinch_x,start_pinch_y,0);
+          /*var point = new THREE.Vector3 (start_pinch_x,start_pinch_y,0);
           var geometry = new THREE.Geometry();
           var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 10 } );
           geometry.vertices.push (point);
           var line = new THREE.Line (geometry, strokeMaterial);
           scene.add(line);
-          selected = line;
+          selected = line;*/
         }
       }
     }
     else {
-      start_pinch_x = null;
-      start_pinch_y = null;
+      selected = null;
+      let lastpoint = [currentMidpoint.x,currentMidpoint.y];
+      cursor_history.push(lastpoint);
+      if (cursor_history.length > 5) {
+        cursor_history.shift();
+      }
     }
     //handpose model
     handposeModel.estimateHands(capture).then(function(_hands) {
