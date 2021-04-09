@@ -395,7 +395,10 @@ geometry.vertices.push(point);
 var bline = new THREE.Line (geometry, strokeMaterial);
 scene.add(bline);
 selected = bline;
+//cursor history location array, always has last 5 locations
 var cursor_history = new Array();
+//stroke color
+var stroke_color = 0xffffff;
 
 function render() {
   //set raycast intersections empty
@@ -410,7 +413,7 @@ function render() {
           let lastpoint = cursor_history[cursor_history.length-1];
           var point = new THREE.Vector3 (lastpoint[0],lastpoint[1],0);
           var geometry = new THREE.Geometry();
-          var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 10 } );
+          var strokeMaterial = new THREE.LineBasicMaterial ( {color:stroke_color, depthWrite:false, linewidth : 10 } );
           geometry.vertices.push (point);
           var bline = new THREE.Line (geometry, strokeMaterial);
           scene.add(bline);
@@ -481,6 +484,27 @@ function render() {
         // update 3d objects
         updateMeshes(myHands[0]);
       }
+
+      for(let i = 0; i < myHands.length; i++) {
+
+        // now estimate gestures based on landmarks
+        // using a minimum confidence of 7.5 (out of 10)
+        const est = GE.estimate(myHands[i].landmarks, 7.5);
+
+        if(est.gestures.length > 0) {
+
+          // find gesture with highest confidence
+          let result = est.gestures.reduce((p, c) => { 
+            return (p.confidence > c.confidence) ? p : c;
+          });
+          //resultLayer.innerText = gestureStrings[result.name];
+          if(result.name == "victory") {
+              console.log("victory");
+          } else if (result.name == "thumbs_up") {
+              console.log("thumbs up");
+          }
+        }
+      }
     });
 
     // find intersections
@@ -527,3 +551,28 @@ function render() {
 }
 
 render(); // kick off the rendering loop!
+
+
+const config = {
+    video: { width: 640, height: 480, fps: 30 }
+  };
+
+const landmarkColors = {
+  thumb: 'red',
+  indexFinger: 'blue',
+  middleFinger: 'yellow',
+  ringFinger: 'green',
+  pinky: 'pink',
+  palmBase: 'white'
+};
+
+const gestureStrings = {
+  'thumbs_up': '👍',
+  'victory': '✌🏻'
+};
+
+const knownGestures = [
+  fp.Gestures.VictoryGesture,
+  fp.Gestures.ThumbsUpGesture
+];
+const GE = new fp.GestureEstimator(knownGestures);
