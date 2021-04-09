@@ -69,13 +69,10 @@
           });
           resultLayer.innerText = gestureStrings[result.name];
           if(result.name == "victory") {
-              console.log(result);
-              //window.location.href="/home.html";
+              console.log("victory");
+              window.location.href="/home.html";
           } else if (result.name == "thumbs_up") {
               console.log("thumbs up");
-              window.location.href="/home.html";
-          } else if (result.name == "three") {
-              console.log("three");
           }
         }
       }
@@ -121,18 +118,10 @@
   }
 
   window.addEventListener("DOMContentLoaded", () => {
-    /*
-    initCamera(
-      config.video.width, config.video.height, config.video.fps
-    ).then(video => {
-      video.play();
-      video.addEventListener("loadeddata", event => {
-        console.log("Camera is ready");
-        main();
-      });
-    });
-    */
-    main();
+    
+    video.onloadedmetadata = function() {
+      main();
+    }
     const canvas = document.querySelector("#pose-canvas");
     canvas.width = config.video.width;
     canvas.height = config.video.height;
