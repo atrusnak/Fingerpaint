@@ -13,8 +13,7 @@
 
   const gestureStrings = {
     'thumbs_up': '👍',
-    'victory': '✌🏻',
-    'three': "THREE"
+    'victory': '✌🏻'
   };
 
   async function main() {
@@ -50,13 +49,6 @@
       const predictions = await model.estimateHands(video, true);
       for(let i = 0; i < predictions.length; i++) {
 
-        // draw colored dots at each predicted joint position
-        for(let part in predictions[i].annotations) {
-          for(let point of predictions[i].annotations[part]) {
-            drawPoint(ctx, point[0], point[1], 3, landmarkColors[part]);
-          }
-        }
-
         // now estimate gestures based on landmarks
         // using a minimum confidence of 7.5 (out of 10)
         const est = GE.estimate(predictions[i].landmarks, 7.5);
@@ -70,7 +62,6 @@
           resultLayer.innerText = gestureStrings[result.name];
           if(result.name == "victory") {
               console.log("victory");
-              window.location.href="/home.html";
           } else if (result.name == "thumbs_up") {
               console.log("thumbs up");
           }
@@ -83,38 +74,6 @@
 
     estimateHands();
     console.log("Starting predictions");
-  }
-
-  async function initCamera(width, height, fps) {
-
-   /*  const constraints = {
-      audio: false,
-      video: {
-        facingMode: "user",
-        width: width,
-        height: height,
-        frameRate: { max: fps }
-      }
-    };
-
-    const video = document.querySelector("video");
-    video.width = width;
-    video.height = height;
-
-    // get video stream
-    const stream = await navigator.mediaDevices.getUserMedia(constraints);
-    video.srcObject = stream;
- */
-    return new Promise(resolve => {
-      video.onloadedmetadata = () => { resolve(video) };
-    });
-  }
-
-  function drawPoint(ctx, x, y, r, color) {
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
-    ctx.fill();
   }
 
   window.addEventListener("DOMContentLoaded", () => {
