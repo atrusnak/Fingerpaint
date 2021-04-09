@@ -59,3 +59,15 @@ margin-bottom:-25%;
 #redo{
   padding-right:30%; 
 }
+.anchorButton {
+  
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: auto;
+  cursor: pointer;
+
+}
+.form-group {
+  margin-left: 10%;
+}

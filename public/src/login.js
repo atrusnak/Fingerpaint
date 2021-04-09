@@ -79,7 +79,9 @@ Fingerpaint.prototype.create = function(){
 Fingerpaint.prototype.edit = function(){
   var that = this;
 
-  if(firebase.auth().currentUser != null){
+  firebase.auth().onAuthStateChanged(function(user){
+
+    if (user!=null) {
     var userEmail = document.getElementById("email_field").value;
     var userPass = document.getElementById("password_field").value;
     var old_pass = document.getElementById("old_password_field").value;
@@ -92,11 +94,71 @@ Fingerpaint.prototype.edit = function(){
         userCredential.user.updateEmail(userEmail);
         userCredential.user.updatePassword(userPass);
     })
-
-
   }
-  
+
+  })
 }
+
+Fingerpaint.prototype.setDisplayName = function () {
+  var user = firebase.auth().currentUser;
+  var userName = document.getElementById("inputUserName").value;
+  user.updateProfile({
+    displayName: userName,
+
+  }).then(function(){
+    //Update successful.
+  }).catch(function(error){
+  
+  });
+}
+Fingerpaint.prototype.setProfilePic = function () {
+  var user = firebase.auth().currentUser;
+  var profilePic = document.getElementById("inputProfilePic").value;
+  user.updateProfile({
+    photoURL: userName,
+
+  }).then(function(){
+    //Update successful.
+  }).catch(function(error){
+   document.getElementById("passworderror").innerHTML = "Wrong password entry.";
+  });
+}
+
+Fingerpaint.prototype.setPassword = function(){
+  var user= firebase.auth().currentUser;
+  var userProvidedPassword = document.getElementById("inputOldPassword").value;
+  var newPassword = document.getElementById("inputPassword").value;
+  var credential = firebase.auth.EmailAuthProvider.credential(
+      user.email, 
+      userProvidedPassword
+  );
+
+  user.reauthenticateWithCredential(credential).then(function(){
+    //user re-authenticated
+    user.updatePassword(newPassword).then(function(){
+      //success
+    }).catch(function(error){
+      //error
+    });
+  }).catch(function(error){
+  //error happened
+  });
+
+}
+Fingerpaint.prototype.resetPassword = function(){
+  var auth = firebase.auth();
+  var userEmail = document.getElementById("inputEmail").value;
+
+  auth.sendPasswordResetEmail(userEmail).then(function(){
+  location.reload();  
+  }).catch(function(error){
+
+  });
+  console.log("resetPassword");
+}
+  
+  
+
 
 //5. logout. we don't need this
 Fingerpaint.prototype.logout = function(){
