@@ -136,6 +136,7 @@ Fingerpaint.prototype.setPassword = function(){
   user.reauthenticateWithCredential(credential).then(function(){
     //user re-authenticated
     user.updatePassword(newPassword).then(function(){
+      location.reload();  
       //success
     }).catch(function(error){
       //error
@@ -143,6 +144,7 @@ Fingerpaint.prototype.setPassword = function(){
   }).catch(function(error){
   //error happened
   });
+  
 
 }
 Fingerpaint.prototype.resetPassword = function(){
