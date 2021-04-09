@@ -390,7 +390,7 @@ start_pinch_y = currentMidpoint.y;
 
 var point = new THREE.Vector3 (0,0,0);
 var geometry = new THREE.Geometry();
-var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 10 } );
+var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 30 } );
 geometry.vertices.push(point);
 var bline = new THREE.Line (geometry, strokeMaterial);
 scene.add(bline);
@@ -500,8 +500,10 @@ function render() {
           //resultLayer.innerText = gestureStrings[result.name];
           if(result.name == "victory") {
               console.log("victory");
+              stroke_color = 0x333CFF;
           } else if (result.name == "thumbs_up") {
               console.log("thumbs up");
+              stroke_color = 0x000000;
           }
         }
       }
