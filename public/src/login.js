@@ -137,6 +137,7 @@ Fingerpaint.prototype.setPassword = function(){
     //user re-authenticated
     user.updatePassword(newPassword).then(function(){
       //success
+      location.reload();
     }).catch(function(error){
       //error
     });
