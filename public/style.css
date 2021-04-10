@@ -1,0 +1,73 @@
+.form-group{
+  width: 100%;
+  padding-top: 2%;
+}
+
+#profile{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#plus{
+  background-color: transparent;
+}
+
+#finger{
+  color: black;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.setting{
+  margin-left: 10%;
+  margin-top: 10%;
+}
+
+.btn {
+  margin-top: 3%;
+  width: 50%;
+  margin-left: 25%;
+}
+.list{
+  margin-left: 20%;
+}
+
+.table{
+  margin-left: 20%;  
+  margin-top: 10%;
+}
+
+#proPic{
+  margin-left: 17%;
+}
+
+.drawtable{
+  margin-left: 0%;
+  width: 110px;
+  background-color: #CC3385;
+}
+
+.iconify{
+  margin-top: 35%;
+  margin-left:30%;
+  padding-right: 10%;
+}
+#undo{
+padding-right:30%;
+margin-bottom:-25%;
+}
+#redo{
+  padding-right:30%; 
+}
+.anchorButton {
+  
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: auto;
+  cursor: pointer;
+
+}
+.form-group {
+  margin-left: 10%;
+}

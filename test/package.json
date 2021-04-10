@@ -1,0 +1,15 @@
+{
+  "name": "ls",
+  "version": "1.0.0",
+  "description": "Unit Testing for Fingerpaint",
+  "main": "test.js",
+  "scripts": {
+    "test": "mocha --exit"
+  },
+  "author": "Tejvir Mann",
+  "license": "ISC",
+  "devDependencies": {
+    "@firebase/testing": "^0.20.11",
+    "mocha": "^8.3.2"
+  }
+}
