@@ -29,14 +29,14 @@ describe("Fingerpaint Tests", () => {
 
     it("Can read posts marked public", async() =>{
         const db = firebase.initializeTestApp({projectId: MY_PROJECT_ID}).firestore();
-        const testQuery = db.collection("posts").wear("visibility", "==", "public");
+        const testQuery = db.collection("posts").where("visibility", "==", "public");
         await firebase.assertSucceeds(testQuery.get()); //await since async.
     });
 
     it("Can query personal posts", async() =>{
         const myAuth = {uid: "user_abc", email: "abc@gmail.com"};
         const db = firebase.initializeTestApp({projectId: MY_PROJECT_ID, auth: myAuth}).firestore();
-        const testQuery = db.collection("posts").wear("authorId", "==", myId);
+        const testQuery = db.collection("posts").where("authorId", "==", "users_abc");
         await firebase.assertSucceeds(testQuery.get()); //await since async.
     });
 })
