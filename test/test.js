@@ -1,3 +1,7 @@
+//how to run the tests
+//1. firebase emulators:start
+//2. npm test inside the tests folder
+
 const assert = require('assert');
 const firebase = require('@firebase/testing');
 const MY_PROJECT_ID = 'fingerpaint-7b504';
