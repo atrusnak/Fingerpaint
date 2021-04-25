@@ -1,6 +1,7 @@
 .form-group{
   width: 100%;
-  padding-top: 2%;
+  padding-top: 5%;
+  padding-left: 15%;
 }
 
 #profile{
@@ -13,7 +14,7 @@
 }
 
 #finger{
-  color: black;
+  color:rgb(0, 0, 0);
   margin-left: 20%;
   margin-right: 20%;
 }
@@ -44,7 +45,6 @@
 .drawtable{
   margin-left: 0%;
   width: 110px;
-  background-color: #CC3385;
 }
 
 .iconify{
