@@ -409,39 +409,6 @@ function render() {
 
     //check pinch
     if (pinch) {
-        if (selected == null) {
-          let lastpoint = cursor_history[cursor_history.length-1];
-          var point = new THREE.Vector3 (lastpoint[0],lastpoint[1],0);
-          var geometry = new THREE.Geometry();
-          var strokeMaterial = new THREE.LineBasicMaterial ( {color:stroke_color, depthWrite:false, linewidth : 10 } );
-          geometry.vertices.push (point);
-          var bline = new THREE.Line (geometry, strokeMaterial);
-          scene.add(bline);
-          selected = bline;
-        }
-        var line = selected;
-        var point = new THREE.Vector3 (currentMidpoint.x,currentMidpoint.y,0);
-        var oldgeometry = line.geometry;
-        var newgeometry = new THREE.Geometry();
-        newgeometry.vertices = oldgeometry.vertices;
-        newgeometry.vertices.push (point);
-        line.geometry = newgeometry;
-        selected = line;
-
-      /*console.log(
-          "object x, y: " +
-            INTERSECTED.position.x +
-            ", " +
-            INTERSECTED.position.y +
-            "mousesim: " +
-            mousesim.x +
-            ", " +
-            mousesim.y +
-            "midpoint: " +
-            currentMidpoint.x +
-            ", " +
-            currentMidpoint.y
-        );*/
 
       if (INTERSECTED) {
         if ("position" in INTERSECTED) {
@@ -456,6 +423,26 @@ function render() {
           scene.add(line);
           selected = line;*/
         }
+      }
+      else {
+        if (selected == null) {
+          let lastpoint = cursor_history[cursor_history.length-1];
+          var point = new THREE.Vector3 (lastpoint[0],lastpoint[1],0);
+          var geometry = new THREE.Geometry();
+          var strokeMaterial = new THREE.LineBasicMaterial ( {color:stroke_color, depthWrite:false, linewidth : 100 } );
+          geometry.vertices.push (point);
+          var bline = new THREE.Line (geometry, strokeMaterial);
+          scene.add(bline);
+          selected = bline;
+        }
+        var line = selected;
+        var point = new THREE.Vector3 (currentMidpoint.x,currentMidpoint.y,0);
+        var oldgeometry = line.geometry;
+        var newgeometry = new THREE.Geometry();
+        newgeometry.vertices = oldgeometry.vertices;
+        newgeometry.vertices.push (point);
+        line.geometry = newgeometry;
+        selected = line;
       }
     }
     else {
