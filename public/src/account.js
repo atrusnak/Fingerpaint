@@ -42,21 +42,85 @@ var PasswordForm = function (_React$Component) {
     return PasswordForm;
 }(React.Component);
 
-var Account = function (_React$Component2) {
-    _inherits(Account, _React$Component2);
+var UserNameForm = function (_React$Component2) {
+    _inherits(UserNameForm, _React$Component2);
+
+    function UserNameForm() {
+        _classCallCheck(this, UserNameForm);
+
+        return _possibleConstructorReturn(this, (UserNameForm.__proto__ || Object.getPrototypeOf(UserNameForm)).apply(this, arguments));
+    }
+
+    _createClass(UserNameForm, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                null,
+                React.createElement("label", { htmlFor: "inputUsernName", className: "visually-hidden" }),
+                React.createElement("input", { type: "password", id: "inputUserName", className: "form-control", placeholder: "username" }),
+                React.createElement(
+                    "button",
+                    { className: "btn btn-primary", "btn-lg": "true", "btn-block": "true", onClick: function onClick() {
+                            return Fingerpaint.prototype.setDisplayName();
+                        } },
+                    "Submit"
+                )
+            );
+        }
+    }]);
+
+    return UserNameForm;
+}(React.Component);
+
+var PhotoURL = function (_React$Component3) {
+    _inherits(PhotoURL, _React$Component3);
+
+    function PhotoURL() {
+        _classCallCheck(this, PhotoURL);
+
+        return _possibleConstructorReturn(this, (PhotoURL.__proto__ || Object.getPrototypeOf(PhotoURL)).apply(this, arguments));
+    }
+
+    _createClass(PhotoURL, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                null,
+                React.createElement("label", { htmlFor: "inputURL", className: "visually-hidden" }),
+                React.createElement("input", { id: "inputProfilePic", className: "form-control", placeholder: "Profile Picture URL" }),
+                React.createElement(
+                    "button",
+                    { className: "btn btn-primary", "btn-lg": "true", "btn-block": "true", onClick: function onClick() {
+                            return Fingerpaint.prototype.setProfilePic();
+                        } },
+                    "Submit"
+                )
+            );
+        }
+    }]);
+
+    return PhotoURL;
+}(React.Component);
+
+var Account = function (_React$Component4) {
+    _inherits(Account, _React$Component4);
 
     function Account(props) {
         _classCallCheck(this, Account);
 
-        var _this2 = _possibleConstructorReturn(this, (Account.__proto__ || Object.getPrototypeOf(Account)).call(this, props));
+        var _this4 = _possibleConstructorReturn(this, (Account.__proto__ || Object.getPrototypeOf(Account)).call(this, props));
 
-        _this2.state = {
+        _this4.state = {
             passwordForm: false,
             userNameForm: false,
-            profilePicFrom: false
+            profilePicForm: false
         };
-        _this2._passwordClick = _this2._passwordClick.bind(_this2);
-        return _this2;
+        _this4._passwordClick = _this4._passwordClick.bind(_this4);
+        _this4._userNameClick = _this4._userNameClick.bind(_this4);
+        _this4._photoURLClick = _this4._photoURLClick.bind(_this4);
+        return _this4;
     }
 
     _createClass(Account, [{
@@ -67,6 +131,20 @@ var Account = function (_React$Component2) {
             });
         }
     }, {
+        key: "_userNameClick",
+        value: function _userNameClick() {
+            this.setState({
+                userNameForm: true
+            });
+        }
+    }, {
+        key: "_photoURLClick",
+        value: function _photoURLClick() {
+            this.setState({
+                profilePicForm: true
+            });
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
@@ -74,9 +152,10 @@ var Account = function (_React$Component2) {
                 null,
                 React.createElement(
                     "button",
-                    { type: "button", id: "changeUserName", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true" },
+                    { type: "button", id: "changeUserName", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true", onClick: this._userNameClick },
                     "Change Username"
                 ),
+                this.state.userNameForm ? React.createElement(UserNameForm, null) : null,
                 React.createElement(
                     "button",
                     { type: "button", id: "changePassword", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true", onClick: this._passwordClick },
@@ -85,9 +164,10 @@ var Account = function (_React$Component2) {
                 this.state.passwordForm ? React.createElement(PasswordForm, null) : null,
                 React.createElement(
                     "button",
-                    { type: "button", id: "changePicture", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true" },
+                    { type: "button", id: "changePicture", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true", onClick: this._photoURLClick },
                     "Change Profile Picture"
                 ),
+                this.state.profilePicForm ? React.createElement(PhotoURL, null) : null,
                 React.createElement(
                     "button",
                     { type: "button", onClick: function onClick() {

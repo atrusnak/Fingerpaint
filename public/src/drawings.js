@@ -39,7 +39,7 @@ var Drawings = function (_React$Component) {
                                 { id: "profile", onClick: function onClick() {
                                         return Fingerpaint.prototype.goToDraw();
                                     } },
-                                React.createElement("img", { src: "draw1.jpg", width: "200", height: "200" })
+                                React.createElement("img", { src: "draw1.jpg", width: "150", height: "150" })
                             )
                         ),
                         React.createElement(
@@ -50,7 +50,7 @@ var Drawings = function (_React$Component) {
                                 { id: "profile", onClick: function onClick() {
                                         return Fingerpaint.prototype.goToDraw();
                                     } },
-                                React.createElement("img", { src: "draw2.jpg", width: "200", height: "200" })
+                                React.createElement("img", { src: "draw2.jpg", width: "150", height: "150" })
                             )
                         ),
                         React.createElement(
@@ -61,7 +61,7 @@ var Drawings = function (_React$Component) {
                                 { id: "profile", onClick: function onClick() {
                                         return Fingerpaint.prototype.goToDraw();
                                     } },
-                                React.createElement("img", { src: "draw3.jpg", width: "200", height: "200" })
+                                React.createElement("img", { src: "draw3.jpg", width: "150", height: "150" })
                             )
                         ),
                         React.createElement(
@@ -72,7 +72,7 @@ var Drawings = function (_React$Component) {
                                 { id: "profile", onClick: function onClick() {
                                         return Fingerpaint.prototype.goToDraw();
                                     } },
-                                React.createElement("img", { src: "draw4.jpg", width: "200", height: "200" })
+                                React.createElement("img", { src: "draw4.jpg", width: "150", height: "150" })
                             )
                         )
                     ),
@@ -88,7 +88,7 @@ var Drawings = function (_React$Component) {
                                 { id: "profile", onClick: function onClick() {
                                         return Fingerpaint.prototype.goToDraw();
                                     } },
-                                React.createElement("img", { src: "draw5.jpg", width: "200", height: "200" })
+                                React.createElement("img", { src: "draw4.jpg", width: "150", height: "150" })
                             )
                         ),
                         React.createElement(
@@ -99,7 +99,7 @@ var Drawings = function (_React$Component) {
                                 { id: "profile", onClick: function onClick() {
                                         return Fingerpaint.prototype.goToDraw();
                                     } },
-                                React.createElement("img", { src: "draw6.jpg", width: "200", height: "200" })
+                                React.createElement("img", { src: "draw3.jpg", width: "150", height: "150" })
                             )
                         ),
                         React.createElement(
@@ -110,7 +110,7 @@ var Drawings = function (_React$Component) {
                                 { id: "profile", onClick: function onClick() {
                                         return Fingerpaint.prototype.goToDraw();
                                     } },
-                                React.createElement("img", { src: "draw7.jpg", width: "200", height: "200" })
+                                React.createElement("img", { src: "draw2.jpg", width: "150", height: "150" })
                             )
                         ),
                         React.createElement(
@@ -121,7 +121,7 @@ var Drawings = function (_React$Component) {
                                 { id: "profile", onClick: function onClick() {
                                         return Fingerpaint.prototype.goToDraw();
                                     } },
-                                React.createElement("img", { src: "draw8.jpg", width: "200", height: "200" })
+                                React.createElement("img", { src: "draw1.jpg", width: "150", height: "150" })
                             )
                         )
                     )

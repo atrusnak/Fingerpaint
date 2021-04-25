@@ -108,21 +108,31 @@ Fingerpaint.prototype.setDisplayName = function () {
 
   }).then(function(){
     //Update successful.
+    location.reload();
   }).catch(function(error){
-  
   });
 }
+Fingerpaint.prototype.getDisplayName = function () {
+  var user = firebase.auth().currentUser;
+  return user.displayName;
+}
+
 Fingerpaint.prototype.setProfilePic = function () {
   var user = firebase.auth().currentUser;
   var profilePic = document.getElementById("inputProfilePic").value;
   user.updateProfile({
-    photoURL: userName,
-
+    photoURL: profilePic,
   }).then(function(){
     //Update successful.
+    location.reload();
   }).catch(function(error){
    document.getElementById("passworderror").innerHTML = "Wrong password entry.";
   });
+}
+
+Fingerpaint.prototype.getProfilePic = function () {
+  var user = firebase.auth().currentUser;
+  return user.photoURL;
 }
 
 Fingerpaint.prototype.setPassword = function(){
