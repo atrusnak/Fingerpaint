@@ -227,6 +227,13 @@ for (let i = 0; i < 5; i++) {
   scene.add(object);
 }
 
+var clear = document.getElementById('clearBtn');
+clear.onclick = function() {
+  while(scene.children.length > 44){ 
+    scene.remove(scene.children[scene.children.length-1]); 
+  }
+}
+
 var raycaster = new THREE.Raycaster();
 var currentMidpoint = new THREE.Vector3(0, 0, 0);
 const mouse = new THREE.Vector2();
