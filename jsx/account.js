@@ -17,8 +17,8 @@ class UserNameForm extends React.Component{
     render(){
         return(
             <div>
-               <label htmlFor ="inputUsernName" className="visually-hidden"></label>
-               <input type="password" id="inputUserName" className="form-control" placeholder="username"></input>
+               <label htmlFor ="inputUserName" className="visually-hidden"></label>
+               <input type="username" id="inputUserName" className="form-control" placeholder="username"></input>
                <button className="btn btn-primary" btn-lg="true" btn-block="true" onClick={() => Fingerpaint.prototype.setDisplayName()}>Submit</button> 
             </div>
         );
@@ -66,11 +66,11 @@ class Account extends React.Component {
         return(
             <div>
               <button type="button" id="changeUserName" className="btn btn-primary" btn-lg="true" btn-block="true" onClick ={this._userNameClick}>Change Username</button>
-              {this.state.userNameForm ? <UserNameForm /> :null}
+              {this.state.userNameForm ? ReactDOM.render(<UserNameForm/>, accountContainer) :null}
               <button type="button" id="changePassword" className="btn btn-primary" btn-lg="true" btn-block="true" onClick ={this._passwordClick}>Change Password</button>
-              {this.state.passwordForm ? <PasswordForm /> : null}
+              {this.state.passwordForm ? ReactDOM.render(<PasswordForm/>, accountContainer) : null}
               <button type="button" id="changePicture" className="btn btn-primary" btn-lg="true" btn-block="true" onClick = {this._photoURLClick}>Change Profile Picture</button>
-              {this.state.profilePicForm ? <PhotoURL/> :null}
+              {this.state.profilePicForm ? ReactDOM.render(<PhotoURL/>, accountContainer) :null}
               <button type="button" onClick = {() => Fingerpaint.prototype.logout()} name="n1" id="logout" className="btn btn-primary" btn-lg="true" btn-block="true">Logout</button>
             </div>
         );

@@ -57,8 +57,8 @@ var UserNameForm = function (_React$Component2) {
             return React.createElement(
                 "div",
                 null,
-                React.createElement("label", { htmlFor: "inputUsernName", className: "visually-hidden" }),
-                React.createElement("input", { type: "password", id: "inputUserName", className: "form-control", placeholder: "username" }),
+                React.createElement("label", { htmlFor: "inputUserName", className: "visually-hidden" }),
+                React.createElement("input", { type: "username", id: "inputUserName", className: "form-control", placeholder: "username" }),
                 React.createElement(
                     "button",
                     { className: "btn btn-primary", "btn-lg": "true", "btn-block": "true", onClick: function onClick() {
@@ -155,19 +155,19 @@ var Account = function (_React$Component4) {
                     { type: "button", id: "changeUserName", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true", onClick: this._userNameClick },
                     "Change Username"
                 ),
-                this.state.userNameForm ? React.createElement(UserNameForm, null) : null,
+                this.state.userNameForm ? ReactDOM.render(React.createElement(UserNameForm, null), accountContainer) : null,
                 React.createElement(
                     "button",
                     { type: "button", id: "changePassword", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true", onClick: this._passwordClick },
                     "Change Password"
                 ),
-                this.state.passwordForm ? React.createElement(PasswordForm, null) : null,
+                this.state.passwordForm ? ReactDOM.render(React.createElement(PasswordForm, null), accountContainer) : null,
                 React.createElement(
                     "button",
                     { type: "button", id: "changePicture", className: "btn btn-primary", "btn-lg": "true", "btn-block": "true", onClick: this._photoURLClick },
                     "Change Profile Picture"
                 ),
-                this.state.profilePicForm ? React.createElement(PhotoURL, null) : null,
+                this.state.profilePicForm ? ReactDOM.render(React.createElement(PhotoURL, null), accountContainer) : null,
                 React.createElement(
                     "button",
                     { type: "button", onClick: function onClick() {
