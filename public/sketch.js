@@ -200,12 +200,43 @@ for (var i = 0; i < 21; i++) {
 }
 
 const boxgeometry = new THREE.BoxBufferGeometry(20, 20, 20);
-
+const spheregeometry = new THREE.SphereGeometry(10, 32, 32);
 //can't include first 45 objects since they're the hand
 //just build a new array of intersectable objects; revised scene children
 var revisedChildren = [];
 
+/*
 for (let i = 0; i < 5; i++) {
+  const object = new THREE.Mesh(
+    boxgeometry,
+    new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
+  );
+
+  object.position.x = Math.random() * 400 - 200;
+  object.position.y = Math.random() * 40 - 20;
+  object.position.z = Math.random() * -100;
+
+  object.rotation.x = Math.random() * 2 * Math.PI;
+  object.rotation.y = Math.random() * 2 * Math.PI;
+  object.rotation.z = Math.random() * 2 * Math.PI;
+
+  object.scale.x = Math.random() + 4;
+  object.scale.y = Math.random() + 4;
+  object.scale.z = Math.random() + 2;
+
+  revisedChildren.push(object);
+  scene.add(object);
+}*/
+
+var clearBtn = document.getElementById('clearBtn');
+clearBtn.onclick = function() {
+  while(scene.children.length > 44){ 
+    scene.remove(scene.children[scene.children.length-1]); 
+  }
+}
+
+var cubeBtn = document.getElementById('cubeBtn');
+cubeBtn.onclick = function() {
   const object = new THREE.Mesh(
     boxgeometry,
     new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
@@ -227,11 +258,27 @@ for (let i = 0; i < 5; i++) {
   scene.add(object);
 }
 
-var clear = document.getElementById('clearBtn');
-clear.onclick = function() {
-  while(scene.children.length > 44){ 
-    scene.remove(scene.children[scene.children.length-1]); 
-  }
+var sphereBtn = document.getElementById('sphereBtn');
+sphereBtn.onclick = function() {
+  const object = new THREE.Mesh(
+    spheregeometry,
+    new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
+  );
+
+  object.position.x = Math.random() * 400 - 200;
+  object.position.y = Math.random() * 40 - 20;
+  object.position.z = Math.random() * -100;
+
+  object.rotation.x = Math.random() * 2 * Math.PI;
+  object.rotation.y = Math.random() * 2 * Math.PI;
+  object.rotation.z = Math.random() * 2 * Math.PI;
+
+  object.scale.x = Math.random() + 4;
+  object.scale.y = Math.random() + 4;
+  object.scale.z = Math.random() + 2;
+
+  revisedChildren.push(object);
+  scene.add(object);
 }
 
 var raycaster = new THREE.Raycaster();
