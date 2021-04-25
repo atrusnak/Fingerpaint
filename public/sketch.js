@@ -51,10 +51,10 @@ window.addEventListener("resize", onWindowResize, false);
 var capture = document.getElementById("video");
 
 //set scene background to video
-var videoTexture = new THREE.VideoTexture(capture);
+/*var videoTexture = new THREE.VideoTexture(capture);
 videoTexture.minFilter = THREE.LinearFilter;
 
-scene.background = videoTexture;
+scene.background = videoTexture;*/
 
 //check permission
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -85,13 +85,13 @@ capture.style.position = "absolute";
 capture.style.zIndex = -1; // "send to back"
 
 //threejs
-var texture = new THREE.VideoTexture(capture);
+/*var texture = new THREE.VideoTexture(capture);
 
 var geometry = new THREE.PlaneBufferGeometry(
   window.innerWidth,
   window.innerHeight
 );
-var material = new THREE.MeshBasicMaterial({ map: texture });
+var material = new THREE.MeshBasicMaterial({ map: texture });*/
 
 // signal when capture is ready and set size for debug canvas
 capture.onloadeddata = function() {
