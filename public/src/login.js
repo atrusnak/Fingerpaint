@@ -8,10 +8,10 @@
 'use strict';
 
 //init
-Fingerpaint.prototype.initsetup = function() {
-  var config = this.getFirebaseConfig();
-  window.location='index.html';
-};
+// Fingerpaint.prototype.initsetup = function() {
+//   var config = this.getFirebaseConfig();
+//   window.location='index.html';
+// };
 
 
 //login
@@ -24,6 +24,7 @@ Fingerpaint.prototype.login = function(){
 
   // console.log("login: before firebase add");
   // console.log("yes");
+  
   
   firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
     // Handle Errors here.

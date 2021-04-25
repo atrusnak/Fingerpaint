@@ -1,5 +1,6 @@
 # Fingerpaint (Web)
 # To setup and run
+`conda install -c conda-forge nodejs`\
 `npm -g install firebase-tools` \
 `firebase login` \
 `firebase use --add` \
