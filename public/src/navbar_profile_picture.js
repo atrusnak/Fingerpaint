@@ -1,5 +1,3 @@
-'use strict';
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -8,49 +6,35 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Title = function (_React$Component) {
-    _inherits(Title, _React$Component);
+var ProfilePicture = function (_React$Component) {
+    _inherits(ProfilePicture, _React$Component);
 
-    function Title() {
-        _classCallCheck(this, Title);
+    function ProfilePicture() {
+        _classCallCheck(this, ProfilePicture);
 
-        return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (ProfilePicture.__proto__ || Object.getPrototypeOf(ProfilePicture)).apply(this, arguments));
     }
 
-    _createClass(Title, [{
-        key: 'render',
+    _createClass(ProfilePicture, [{
+        key: "render",
         value: function render() {
-            var mysytle = {
-                //padding: '300',
-                cursor: 'pointer',
-                //marginWidth: '300',
-                position: 'absolute',
-                left: '30%'
-                //top: '50%',
-                //transform: 'translate(-50%, -50%)',
-
-            };
-
+            var photoURL = Fingerpaint.prototype.getProfilePic();
             return React.createElement(
-                'small',
-                { id: 'finger', style: mysytle, className: 'text-muted', onClick: function onClick() {
-                        return Fingerpaint.prototype.goToHome();
+                "a",
+                { className: "anchorButton", id: "profile", onClick: function onClick() {
+                        return Fingerpaint.prototype.goToAccount();
                     } },
-                React.createElement(
-                    'h1',
-                    null,
-                    'FINGERPAINT'
-                )
+                React.createElement("img", { src: photoURL, width: "50", height: "50" })
             );
         }
     }]);
 
-    return Title;
+    return ProfilePicture;
 }(React.Component);
 
-var titleContainer = document.querySelector('#title_container');
+var profilePicContainer = document.querySelector('#navbar_profile_picture_container');
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        ReactDOM.render(React.createElement(Title, null), titleContainer);
+        ReactDOM.render(React.createElement(ProfilePicture, null), profilePicContainer);
     }
 });
