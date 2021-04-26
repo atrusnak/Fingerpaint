@@ -7,11 +7,12 @@ class Title extends React.Component {
             cursor: 'pointer',
             //marginWidth: '300',
             position: 'absolute', 
-            left: '50%', 
+            left: '30%', 
             //top: '50%',
-            transform: 'translate(-50%, -50%)',
+            //transform: 'translate(-50%, -50%)',
             
         };
+    
         return(
             <small id="finger" style={mysytle} className="text-muted" onClick = {() => Fingerpaint.prototype.goToHome()}><h1>FINGERPAINT</h1></small>
         );
