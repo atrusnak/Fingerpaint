@@ -51,10 +51,10 @@ window.addEventListener("resize", onWindowResize, false);
 var capture = document.getElementById("video");
 
 //set scene background to video
-var videoTexture = new THREE.VideoTexture(capture);
+/*var videoTexture = new THREE.VideoTexture(capture);
 videoTexture.minFilter = THREE.LinearFilter;
 
-scene.background = videoTexture;
+scene.background = videoTexture;*/
 
 //check permission
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -85,13 +85,13 @@ capture.style.position = "absolute";
 capture.style.zIndex = -1; // "send to back"
 
 //threejs
-var texture = new THREE.VideoTexture(capture);
+/*var texture = new THREE.VideoTexture(capture);
 
 var geometry = new THREE.PlaneBufferGeometry(
   window.innerWidth,
   window.innerHeight
 );
-var material = new THREE.MeshBasicMaterial({ map: texture });
+var material = new THREE.MeshBasicMaterial({ map: texture });*/
 
 // signal when capture is ready and set size for debug canvas
 capture.onloadeddata = function() {
@@ -200,14 +200,69 @@ for (var i = 0; i < 21; i++) {
 }
 
 const boxgeometry = new THREE.BoxBufferGeometry(20, 20, 20);
-
+const spheregeometry = new THREE.SphereGeometry(10, 32, 32);
 //can't include first 45 objects since they're the hand
 //just build a new array of intersectable objects; revised scene children
 var revisedChildren = [];
 
+/*
 for (let i = 0; i < 5; i++) {
   const object = new THREE.Mesh(
     boxgeometry,
+    new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
+  );
+
+  object.position.x = Math.random() * 400 - 200;
+  object.position.y = Math.random() * 40 - 20;
+  object.position.z = Math.random() * -100;
+
+  object.rotation.x = Math.random() * 2 * Math.PI;
+  object.rotation.y = Math.random() * 2 * Math.PI;
+  object.rotation.z = Math.random() * 2 * Math.PI;
+
+  object.scale.x = Math.random() + 4;
+  object.scale.y = Math.random() + 4;
+  object.scale.z = Math.random() + 2;
+
+  revisedChildren.push(object);
+  scene.add(object);
+}*/
+
+//UI button functions
+var clearBtn = document.getElementById('clearBtn');
+clearBtn.onclick = function() {
+  while(scene.children.length > 44){ 
+    scene.remove(scene.children[scene.children.length-1]); 
+  }
+}
+
+var cubeBtn = document.getElementById('cubeBtn');
+cubeBtn.onclick = function() {
+  const object = new THREE.Mesh(
+    boxgeometry,
+    new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
+  );
+
+  object.position.x = Math.random() * 400 - 200;
+  object.position.y = Math.random() * 40 - 20;
+  object.position.z = Math.random() * -100;
+
+  object.rotation.x = Math.random() * 2 * Math.PI;
+  object.rotation.y = Math.random() * 2 * Math.PI;
+  object.rotation.z = Math.random() * 2 * Math.PI;
+
+  object.scale.x = Math.random() + 4;
+  object.scale.y = Math.random() + 4;
+  object.scale.z = Math.random() + 2;
+
+  revisedChildren.push(object);
+  scene.add(object);
+}
+
+var sphereBtn = document.getElementById('sphereBtn');
+sphereBtn.onclick = function() {
+  const object = new THREE.Mesh(
+    spheregeometry,
     new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
   );
 
@@ -390,11 +445,15 @@ start_pinch_y = currentMidpoint.y;
 
 var point = new THREE.Vector3 (0,0,0);
 var geometry = new THREE.Geometry();
-var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 10 } );
-geometry.vertices.push (point);
+var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 30 } );
+geometry.vertices.push(point);
 var bline = new THREE.Line (geometry, strokeMaterial);
 scene.add(bline);
 selected = bline;
+//cursor history location array, always has last 5 locations
+var cursor_history = new Array();
+//stroke color
+var stroke_color = 0xffffff;
 
 function render() {
   //set raycast intersections empty
@@ -405,6 +464,32 @@ function render() {
 
     //check pinch
     if (pinch) {
+
+      if (INTERSECTED) {
+        if ("position" in INTERSECTED) {
+          INTERSECTED.position.x = currentMidpoint.x;
+          INTERSECTED.position.y = currentMidpoint.y;
+
+          /*var point = new THREE.Vector3 (start_pinch_x,start_pinch_y,0);
+          var geometry = new THREE.Geometry();
+          var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 10 } );
+          geometry.vertices.push (point);
+          var line = new THREE.Line (geometry, strokeMaterial);
+          scene.add(line);
+          selected = line;*/
+        }
+      }
+      else {
+        if (selected == null) {
+          let lastpoint = cursor_history[cursor_history.length-1];
+          var point = new THREE.Vector3 (lastpoint[0],lastpoint[1],0);
+          var geometry = new THREE.Geometry();
+          var strokeMaterial = new THREE.LineBasicMaterial ( {color:stroke_color, depthWrite:false, linewidth : 100 } );
+          geometry.vertices.push (point);
+          var bline = new THREE.Line (geometry, strokeMaterial);
+          scene.add(bline);
+          selected = bline;
+        }
         var line = selected;
         var point = new THREE.Vector3 (currentMidpoint.x,currentMidpoint.y,0);
         var oldgeometry = line.geometry;
@@ -413,40 +498,15 @@ function render() {
         newgeometry.vertices.push (point);
         line.geometry = newgeometry;
         selected = line;
-
-      /*console.log(
-          "object x, y: " +
-            INTERSECTED.position.x +
-            ", " +
-            INTERSECTED.position.y +
-            "mousesim: " +
-            mousesim.x +
-            ", " +
-            mousesim.y +
-            "midpoint: " +
-            currentMidpoint.x +
-            ", " +
-            currentMidpoint.y
-        );*/
-
-      if (INTERSECTED) {
-        if ("position" in INTERSECTED) {
-          INTERSECTED.position.x = currentMidpoint.x;
-          INTERSECTED.position.y = currentMidpoint.y;
-
-          var point = new THREE.Vector3 (start_pinch_x,start_pinch_y,0);
-          var geometry = new THREE.Geometry();
-          var strokeMaterial = new THREE.LineBasicMaterial ( {color:0xffffff, depthWrite:false, linewidth : 10 } );
-          geometry.vertices.push (point);
-          var line = new THREE.Line (geometry, strokeMaterial);
-          scene.add(line);
-          selected = line;
-        }
       }
     }
     else {
-      start_pinch_x = null;
-      start_pinch_y = null;
+      selected = null;
+      let lastpoint = [currentMidpoint.x,currentMidpoint.y];
+      cursor_history.push(lastpoint);
+      if (cursor_history.length > 5) {
+        cursor_history.shift();
+      }
     }
     //handpose model
     handposeModel.estimateHands(capture).then(function(_hands) {
@@ -465,6 +525,29 @@ function render() {
 
         // update 3d objects
         updateMeshes(myHands[0]);
+      }
+
+      for(let i = 0; i < myHands.length; i++) {
+
+        // now estimate gestures based on landmarks
+        // using a minimum confidence of 7.5 (out of 10)
+        const est = GE.estimate(myHands[i].landmarks, 7.5);
+
+        if(est.gestures.length > 0) {
+
+          // find gesture with highest confidence
+          let result = est.gestures.reduce((p, c) => { 
+            return (p.confidence > c.confidence) ? p : c;
+          });
+          //resultLayer.innerText = gestureStrings[result.name];
+          if(result.name == "victory") {
+              console.log("victory");
+              stroke_color = 0x333CFF;
+          } else if (result.name == "thumbs_up") {
+              console.log("thumbs up");
+              stroke_color = 0x000000;
+          }
+        }
       }
     });
 
@@ -512,3 +595,28 @@ function render() {
 }
 
 render(); // kick off the rendering loop!
+
+
+const config = {
+    video: { width: 640, height: 480, fps: 30 }
+  };
+
+const landmarkColors = {
+  thumb: 'red',
+  indexFinger: 'blue',
+  middleFinger: 'yellow',
+  ringFinger: 'green',
+  pinky: 'pink',
+  palmBase: 'white'
+};
+
+const gestureStrings = {
+  'thumbs_up': '👍',
+  'victory': '✌🏻'
+};
+
+const knownGestures = [
+  fp.Gestures.VictoryGesture,
+  fp.Gestures.ThumbsUpGesture
+];
+const GE = new fp.GestureEstimator(knownGestures);
