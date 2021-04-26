@@ -65,61 +65,13 @@
     <script src="src/nav.js"></script>
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 
-    <table class="drawtable table-striped table-inverse table-responsive" style="position:absolute; z-index:300000; background-color: aliceblue;">
-      <thead class="thead-inverse">
 
-          </thead>
+    <div class="sidenav" style="z-index: 3000">
+  <button id="clearBtn" class="iconify" data-icon="bi:eraser" style="color: white; font-size: 64px;"></button>
+  <button id="cubeBtn" class="iconify" data-inline="false" data-icon="bi:square" style="color: white; font-size: 64px;"></button>
+  <button id="sphereBtn" class="iconify" data-inline="false" data-icon="bi:circle" style="color: white; font-size: 64px;"></button>
+  </div>
 
-          <tbody>
-              <tr>
-                  <td scope="row"></td>
-                  <td><button class="iconify" data-icon="bi:brush" style="color: #000000; font-size: 64px;"></button></td>
-              </tr>
-              <tr>
-                <td scope="row"></td>
-                  <td><button id="clearBtn" class="iconify" data-icon="bi:eraser" style="color: #000000; font-size: 64px;"></button></td>
-              </tr>
-              <tr>
-                <td scope="row"></td>
-                  <td><button id="cubeBtn" class="iconify" data-icon="bi:square" style="color: #000000; font-size: 64px;"></button></td>
-              </tr>
-              <tr>
-                  <td scope="row"></td>
-                  <td><button id="sphereBtn" class="iconify" data-inline="false" data-icon="bi:circle" style="color: #000000; font-size: 64px;"></button></td>
-              </tr>
-              <tr>
-              <td scope="row"></td>
-                <td><button class="iconify" data-inline="false" data-icon="carbon:save" style="color: #000000; font-size: 75px;"></button></td>
-            </tr>
-              <tr>
-                <td scope="row"></td>
-                <td><button class="iconify" data-inline="false" data-icon="ic:baseline-color-lens" style="color: #000000; font-size: 90px;"></button></td>
-            </tr>
-            <tr>
-              <td scope="row"></td>
-                <td><button class="iconify" data-inline="false" data-icon="bi:x-square" style="color: #000000; font-size: 64px;"></button></td>
-            </tr>
-            <tr>
-                <td scope="row"></td>
-                <td><button class="iconify" data-inline="false" data-icon="bi:save" style="color: #000000; font-size: 64px;"></button></td>
-            </tr>
-            <tr>
-              <td scope="row"></td>
-              <td><button class="iconify" data-inline="false" data-icon="bi:save" style="color: #000000; font-size: 64px;"></button></td>
-          </tr>
-        <tr>
-          <td scope="row"></td>
-          <td><span id = "undo" class="iconify" data-inline="false" data-icon="ant-design:undo-outlined" style="font-size: 90px;"></span></td>
-      </tr>
-      <tr>
-        <td scope="row"></td>
-        <td><span id = "redo" class="iconify" data-inline="false" data-icon="ant-design:redo-outlined" style="font-size: 90px;"></span></td>
-    </tr>
-
-      
-          </tbody>
-  </table>
-    </form>
   <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
   <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
@@ -129,7 +81,7 @@
   <div id="video-container">
     <video id="video" autoplay playsinline></video>
     <canvas id="pose-canvas"></canvas>
-    <div id="pose-result"></div>
+    <div id="pose-result" ></div>
   </div>
 
 </body>
