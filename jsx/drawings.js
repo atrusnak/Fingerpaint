@@ -3,9 +3,12 @@ class Drawings extends React.Component {
 
     render(){
         return(
+            <div>
+                  
             <table className="table table-striped table-inverse table-responsive">
+            <div><h1 id = "DrawMsg">My Drawings</h1></div>
             <thead className="thead-inverse">
-    
+                
                 </thead>
     
                 <tbody>
@@ -25,6 +28,7 @@ class Drawings extends React.Component {
                     </tr>
                 </tbody>
         </table>
+        </div>
         );
     }
 }

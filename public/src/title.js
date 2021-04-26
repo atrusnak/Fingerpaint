@@ -21,9 +21,14 @@ var Title = function (_React$Component) {
         key: 'render',
         value: function render() {
             var mysytle = {
-                padding: '300',
+                //padding: '300',
                 cursor: 'pointer',
-                marginWidth: '300'
+                //marginWidth: '300',
+                position: 'absolute',
+                left: '50%',
+                //top: '50%',
+                transform: 'translate(-50%, -50%)'
+
             };
             return React.createElement(
                 'small',

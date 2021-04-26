@@ -19,7 +19,7 @@ var ProfilePic = function (_React$Component) {
         key: "render",
         value: function render() {
             var photoURL = Fingerpaint.prototype.getProfilePic();
-            return React.createElement("img", { src: photoURL, id: "proPic", width: "100", height: "100", "class": "img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}", alt: "profile image" });
+            return React.createElement("img", { src: photoURL, id: "proPic", width: "100", height: "100", className: "img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}", alt: "profile image" });
         }
     }]);
 
