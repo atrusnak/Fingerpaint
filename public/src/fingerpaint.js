@@ -28,6 +28,12 @@ function Fingerpaint() {
   // })
 }
 
+Fingerpaint.prototype.showInfo = function(){
+  console.log("in showinfo()");
+  var modal = document.getElementById("#myModal");
+  modal.modal('show');
+}
+
 window.onload = function() {
   window.app = new Fingerpaint();
 };
