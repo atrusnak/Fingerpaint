@@ -229,15 +229,19 @@ for (let i = 0; i < 5; i++) {
   scene.add(object);
 }*/
 
-var clearBtn = document.getElementById('clearBtn');
+/* var clearBtn = document.getElementById('clearBtn');
 clearBtn.onclick = function() {
+  while(scene.children.length > 44){ 
+    scene.remove(scene.children[scene.children.length-1]); 
+  }
+} */
+Fingerpaint.prototype.clearCanvas = function() {
   while(scene.children.length > 44){ 
     scene.remove(scene.children[scene.children.length-1]); 
   }
 }
 
-var cubeBtn = document.getElementById('cubeBtn');
-cubeBtn.onclick = function() {
+Fingerpaint.prototype.addCube = function() {
   const object = new THREE.Mesh(
     boxgeometry,
     new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
@@ -259,8 +263,7 @@ cubeBtn.onclick = function() {
   scene.add(object);
 }
 
-var sphereBtn = document.getElementById('sphereBtn');
-sphereBtn.onclick = function() {
+Fingerpaint.prototype.addSphere = function() {
   const object = new THREE.Mesh(
     spheregeometry,
     new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })

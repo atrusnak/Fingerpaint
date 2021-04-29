@@ -94,10 +94,10 @@
 
 
   <div class="sidenav" style="z-index:3000">
-  <button id="clearBtn" class="iconify" data-icon="bi:eraser" style="color: white; font-size: 64px;"></button>
-  <button id="cubeBtn" class="iconify" data-inline="false" data-icon="bi:square" style="color: white; font-size: 64px;"></button>
-  <button id="sphereBtn" class="iconify" data-inline="false" data-icon="bi:circle" style="color: white; font-size: 64px;"></button>
-  <button  onclick="Fingerpaint.prototype.showInfo" id="infoBtn" class="iconify" type="button" data-inline="false" data-icon="bi-info-square" style="color:white; font-size: 64px;"></button>
+  <button onclick="Fingerpaint.prototype.clearCanvas()" id="clearBtn" type="button" class="iconify" data-icon="bi:eraser" style="color: white; font-size: 64px;"></button>
+  <button onclick="Fingerpaint.prototype.addCube()" id="cubeBtn" type="button" class="iconify" data-inline="false" data-icon="bi:square" style="color: white; font-size: 64px;"></button>
+  <button onclick="Fingerpaint.prototype.addSphere()" id="sphereBtn" type="button" class="iconify" data-inline="false" data-icon="bi:circle" style="color: white; font-size: 64px;"></button>
+  <button onclick="Fingerpaint.prototype.showInfo()" id="infoBtn" class="iconify" type="button" data-inline="false" data-icon="bi-info-square" style="color:white; font-size: 64px;"></button>
   </div>
 
   <!-- include the Glitch button to show what the webpage is about and
