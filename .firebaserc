@@ -1,6 +1,7 @@
 {
   "projects": {
     "default": "fingerpaint-7b504",
-    "staging": "fingerpaint-7b504"
+    "staging": "fingerpaint-7b504",
+    "gestures": "fingerpaint-7b504"
   }
 }

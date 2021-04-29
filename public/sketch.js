@@ -33,6 +33,7 @@ var camera = new THREE.PerspectiveCamera(
   1000
 );
 
+const loader = new THREE.FontLoader();
 //add scene light for phong material
 const light = new THREE.HemisphereLight(0xbbbbff, 0x444422);
 light.position.set(0, 1, 0);
@@ -228,15 +229,19 @@ for (let i = 0; i < 5; i++) {
   scene.add(object);
 }*/
 
-var clearBtn = document.getElementById('clearBtn');
+/* var clearBtn = document.getElementById('clearBtn');
 clearBtn.onclick = function() {
+  while(scene.children.length > 44){ 
+    scene.remove(scene.children[scene.children.length-1]); 
+  }
+} */
+Fingerpaint.prototype.clearCanvas = function() {
   while(scene.children.length > 44){ 
     scene.remove(scene.children[scene.children.length-1]); 
   }
 }
 
-var cubeBtn = document.getElementById('cubeBtn');
-cubeBtn.onclick = function() {
+Fingerpaint.prototype.addCube = function() {
   const object = new THREE.Mesh(
     boxgeometry,
     new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
@@ -258,8 +263,7 @@ cubeBtn.onclick = function() {
   scene.add(object);
 }
 
-var sphereBtn = document.getElementById('sphereBtn');
-sphereBtn.onclick = function() {
+Fingerpaint.prototype.addSphere = function() {
   const object = new THREE.Mesh(
     spheregeometry,
     new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
@@ -425,6 +429,10 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+function removeTexts(textArray) {
+  scene.remove(textArray[textArray.length-1]);
+}
+
 /*
 //for testing the raycasting
 function onDocumentMouseMove(event) {
@@ -453,6 +461,10 @@ selected = bline;
 var cursor_history = new Array();
 //stroke color
 var stroke_color = 0xffffff;
+var texts = [];
+var colorString = "Color: WHITE";
+var gestureFound = true;
+var loopCount = 0;
 
 function render() {
   //set raycast intersections empty
@@ -460,7 +472,7 @@ function render() {
   requestAnimationFrame(render); // this creates an infinite animation loop
   if (handposeModel && videoDataLoaded) {
     // model and video both loaded
-
+    loopCount++;
     //check pinch
     if (pinch) {
 
@@ -526,27 +538,56 @@ function render() {
         updateMeshes(myHands[0]);
       }
 
+
       for(let i = 0; i < myHands.length; i++) {
 
         // now estimate gestures based on landmarks
         // using a minimum confidence of 7.5 (out of 10)
         const est = GE.estimate(myHands[i].landmarks, 7.5);
-
+        
         if(est.gestures.length > 0) {
 
+          
           // find gesture with highest confidence
           let result = est.gestures.reduce((p, c) => { 
             return (p.confidence > c.confidence) ? p : c;
           });
           //resultLayer.innerText = gestureStrings[result.name];
-          if(result.name == "victory") {
-              console.log("victory");
+          
+          if(result.name == "victory" && stroke_color != 0x333CFF) {
               stroke_color = 0x333CFF;
-          } else if (result.name == "thumbs_up") {
-              console.log("thumbs up");
+              gestureFound = true;
+              colorString = "Color: BLUE";
+              
+          } else if (result.name == "thumbs_up" && stroke_color != 0x000000) {
               stroke_color = 0x000000;
-          }
+              colorString = "Color: BLACK";
+              gestureFound = true;
+          }    
         }
+      }
+      if (gestureFound) {  
+        gestureFound = false;
+        const geometry = loader.load( 'https://rawgit.com/mrdoob/three.js/dev/examples/fonts/helvetiker_regular.typeface.json', function(font) {
+          const geometry = new THREE.TextGeometry( colorString, {
+            font: font,
+            size: 20,
+            height: 5
+          } );
+          
+          const txtObj = new THREE.Mesh(
+            geometry,
+            new THREE.MeshBasicMaterial({ color: stroke_color})
+          );
+          
+          txtObj.position.x = 400;
+          txtObj.position.y = -100;
+          txtObj.position.z = 0;
+          txtObj.scale.x = -1;
+          //scene.remove(texts[texts.length-1]); // For continuous display of color string
+          texts.push(txtObj);
+          scene.add(txtObj);
+        });
       }
     });
 
@@ -588,9 +629,16 @@ function render() {
       }
     }
   }
-
+  
   // render the 3D scene!
   renderer.render(scene, camera);
+
+  // For temporary display of color string
+
+  if (loopCount == 50){
+    loopCount = 0;
+    scene.remove(texts[texts.length-1]);
+  }
 }
 
 render(); // kick off the rendering loop!

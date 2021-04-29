@@ -65,11 +65,39 @@
     <script src="src/nav.js"></script>
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 
+    <div id="myModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">How To Use Fingerpaint</h5>
+            <button id="closeBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            <!-- <a href="#" type="button"><i class="bi bi-x-square"></i></a> -->
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li>Hold your hand up until the colored skeleton hand appears</li>
+              <li>Pinch your index finger and thumb together and move to draw</li>
+              <li>Hold up a thumbs up (👍) to change the paint color to black</li>
+              <li>Hold up a peace sign (✌🏻) to change the paint color to blue</li>
+              <li>Press the square button to add random cubes to your drawing</li>
+              <li>Press the circle button to add random spheres to your drawing</li>
+              <li>Pinch the shapes with your index finger and thumb to move them</li>
+              <li>Hit the erase button to clear your drawing</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button id="letsDrawBtn" type="button" data-bs-dismiss="myModal" class="btn btn-primary">Let's Draw!</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="sidenav" style="z-index: 3000">
-  <button id="clearBtn" class="iconify" data-icon="bi:eraser" style="color: white; font-size: 64px;"></button>
-  <button id="cubeBtn" class="iconify" data-inline="false" data-icon="bi:square" style="color: white; font-size: 64px;"></button>
-  <button id="sphereBtn" class="iconify" data-inline="false" data-icon="bi:circle" style="color: white; font-size: 64px;"></button>
+
+  <div class="sidenav" style="z-index:3000">
+  <button onclick="Fingerpaint.prototype.clearCanvas()" id="clearBtn" type="button" class="iconify" data-icon="bi:eraser" style="color: white; font-size: 64px;"></button>
+  <button onclick="Fingerpaint.prototype.addCube()" id="cubeBtn" type="button" class="iconify" data-inline="false" data-icon="bi:square" style="color: white; font-size: 64px;"></button>
+  <button onclick="Fingerpaint.prototype.addSphere()" id="sphereBtn" type="button" class="iconify" data-inline="false" data-icon="bi:circle" style="color: white; font-size: 64px;"></button>
+  <button onclick="Fingerpaint.prototype.showInfo()" id="infoBtn" class="iconify" type="button" data-inline="false" data-icon="bi-info-square" style="color:white; font-size: 64px;"></button>
   </div>
 
   <!-- include the Glitch button to show what the webpage is about and
@@ -101,8 +129,23 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose@0.0.6/dist/handpose.min.js"></script>
 <script src="fingerpose.js" type="text/javascript"></script>
 <script src="sketch.js"></script>
-<!--<script src="detect_gestures.js"></script>-->
+<script>
+  $(document).ready(function() {
+    $("#myModal").modal('show');
+  });
+  $("#letsDrawBtn").on("click", function() {
+    $("#myModal").modal('hide');
+  });
+  $("#closeBtn").on("click", function() {
+    $("#myModal").modal('hide');
+  });
+ /*  $("#showInstr").on("click", function() {
+    $("#myModal").modal('show');
+  }); */
+</script>
 
+<!--<script src="detect_gestures.js"></script>-->
+<!-- 
 <script>
   // draw the FPS
   (function() {
@@ -118,5 +161,5 @@
     script.src = "//mrdoob.github.io/stats.js/build/stats.min.js";
     document.head.appendChild(script);
   })();
-</script>
+</script> -->
 </html>

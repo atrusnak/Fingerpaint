@@ -86,3 +86,11 @@ margin-bottom:-25%;
 #DrawMsg{
   padding-left:10%;
 }
+
+#homeBody{
+  overflow: hidden;
+}
+
+#accountBody{
+  overflow: hidden;
+}
