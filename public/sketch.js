@@ -235,6 +235,15 @@ clearBtn.onclick = function() {
     scene.remove(scene.children[scene.children.length-1]); 
   }
 } */
+Fingerpaint.prototype.saveImage = function() {
+    var a = document.createElement('a');
+
+    renderer.render(scene, camera);
+    a.href = renderer.domElement.toDataURL().replace("image/png", "image/octet-stream");
+    a.download = 'canvas.png'
+    a.click(); 
+}
+
 Fingerpaint.prototype.clearCanvas = function() {
   while(scene.children.length > 44){ 
     scene.remove(scene.children[scene.children.length-1]); 
