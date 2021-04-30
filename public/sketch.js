@@ -33,6 +33,7 @@ var camera = new THREE.PerspectiveCamera(
   1000
 );
 
+const loader = new THREE.FontLoader();
 //add scene light for phong material
 const light = new THREE.HemisphereLight(0xbbbbff, 0x444422);
 light.position.set(0, 1, 0);
@@ -51,10 +52,10 @@ window.addEventListener("resize", onWindowResize, false);
 var capture = document.getElementById("video");
 
 //set scene background to video
-var videoTexture = new THREE.VideoTexture(capture);
+/*var videoTexture = new THREE.VideoTexture(capture);
 videoTexture.minFilter = THREE.LinearFilter;
 
-scene.background = videoTexture;
+scene.background = videoTexture;*/
 
 //check permission
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -85,13 +86,13 @@ capture.style.position = "absolute";
 capture.style.zIndex = -1; // "send to back"
 
 //threejs
-var texture = new THREE.VideoTexture(capture);
+/*var texture = new THREE.VideoTexture(capture);
 
 var geometry = new THREE.PlaneBufferGeometry(
   window.innerWidth,
   window.innerHeight
 );
-var material = new THREE.MeshBasicMaterial({ map: texture });
+var material = new THREE.MeshBasicMaterial({ map: texture });*/
 
 // signal when capture is ready and set size for debug canvas
 capture.onloadeddata = function() {
@@ -200,14 +201,80 @@ for (var i = 0; i < 21; i++) {
 }
 
 const boxgeometry = new THREE.BoxBufferGeometry(20, 20, 20);
-
+const spheregeometry = new THREE.SphereGeometry(10, 32, 32);
 //can't include first 45 objects since they're the hand
 //just build a new array of intersectable objects; revised scene children
 var revisedChildren = [];
 
+/*
 for (let i = 0; i < 5; i++) {
   const object = new THREE.Mesh(
     boxgeometry,
+    new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
+  );
+
+  object.position.x = Math.random() * 400 - 200;
+  object.position.y = Math.random() * 40 - 20;
+  object.position.z = Math.random() * -100;
+
+  object.rotation.x = Math.random() * 2 * Math.PI;
+  object.rotation.y = Math.random() * 2 * Math.PI;
+  object.rotation.z = Math.random() * 2 * Math.PI;
+
+  object.scale.x = Math.random() + 4;
+  object.scale.y = Math.random() + 4;
+  object.scale.z = Math.random() + 2;
+
+  revisedChildren.push(object);
+  scene.add(object);
+}*/
+
+/* var clearBtn = document.getElementById('clearBtn');
+clearBtn.onclick = function() {
+  while(scene.children.length > 44){ 
+    scene.remove(scene.children[scene.children.length-1]); 
+  }
+} */
+Fingerpaint.prototype.saveImage = function() {
+    var a = document.createElement('a');
+
+    renderer.render(scene, camera);
+    a.href = renderer.domElement.toDataURL().replace("image/png", "image/octet-stream");
+    a.download = 'canvas.png'
+    a.click(); 
+}
+
+Fingerpaint.prototype.clearCanvas = function() {
+  while(scene.children.length > 44){ 
+    scene.remove(scene.children[scene.children.length-1]); 
+  }
+}
+
+Fingerpaint.prototype.addCube = function() {
+  const object = new THREE.Mesh(
+    boxgeometry,
+    new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
+  );
+
+  object.position.x = Math.random() * 400 - 200;
+  object.position.y = Math.random() * 40 - 20;
+  object.position.z = Math.random() * -100;
+
+  object.rotation.x = Math.random() * 2 * Math.PI;
+  object.rotation.y = Math.random() * 2 * Math.PI;
+  object.rotation.z = Math.random() * 2 * Math.PI;
+
+  object.scale.x = Math.random() + 4;
+  object.scale.y = Math.random() + 4;
+  object.scale.z = Math.random() + 2;
+
+  revisedChildren.push(object);
+  scene.add(object);
+}
+
+Fingerpaint.prototype.addSphere = function() {
+  const object = new THREE.Mesh(
+    spheregeometry,
     new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
   );
 
@@ -371,6 +438,10 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+function removeTexts(textArray) {
+  scene.remove(textArray[textArray.length-1]);
+}
+
 /*
 //for testing the raycasting
 function onDocumentMouseMove(event) {
@@ -399,6 +470,10 @@ selected = bline;
 var cursor_history = new Array();
 //stroke color
 var stroke_color = 0xffffff;
+var texts = [];
+var colorString = "Color: WHITE";
+var gestureFound = true;
+var loopCount = 0;
 
 function render() {
   //set raycast intersections empty
@@ -406,42 +481,9 @@ function render() {
   requestAnimationFrame(render); // this creates an infinite animation loop
   if (handposeModel && videoDataLoaded) {
     // model and video both loaded
-
+    loopCount++;
     //check pinch
     if (pinch) {
-        if (selected == null) {
-          let lastpoint = cursor_history[cursor_history.length-1];
-          var point = new THREE.Vector3 (lastpoint[0],lastpoint[1],0);
-          var geometry = new THREE.Geometry();
-          var strokeMaterial = new THREE.LineBasicMaterial ( {color:stroke_color, depthWrite:false, linewidth : 10 } );
-          geometry.vertices.push (point);
-          var bline = new THREE.Line (geometry, strokeMaterial);
-          scene.add(bline);
-          selected = bline;
-        }
-        var line = selected;
-        var point = new THREE.Vector3 (currentMidpoint.x,currentMidpoint.y,0);
-        var oldgeometry = line.geometry;
-        var newgeometry = new THREE.Geometry();
-        newgeometry.vertices = oldgeometry.vertices;
-        newgeometry.vertices.push (point);
-        line.geometry = newgeometry;
-        selected = line;
-
-      /*console.log(
-          "object x, y: " +
-            INTERSECTED.position.x +
-            ", " +
-            INTERSECTED.position.y +
-            "mousesim: " +
-            mousesim.x +
-            ", " +
-            mousesim.y +
-            "midpoint: " +
-            currentMidpoint.x +
-            ", " +
-            currentMidpoint.y
-        );*/
 
       if (INTERSECTED) {
         if ("position" in INTERSECTED) {
@@ -456,6 +498,26 @@ function render() {
           scene.add(line);
           selected = line;*/
         }
+      }
+      else {
+        if (selected == null) {
+          let lastpoint = cursor_history[cursor_history.length-1];
+          var point = new THREE.Vector3 (lastpoint[0],lastpoint[1],0);
+          var geometry = new THREE.Geometry();
+          var strokeMaterial = new THREE.LineBasicMaterial ( {color:stroke_color, depthWrite:false, linewidth : 100 } );
+          geometry.vertices.push (point);
+          var bline = new THREE.Line (geometry, strokeMaterial);
+          scene.add(bline);
+          selected = bline;
+        }
+        var line = selected;
+        var point = new THREE.Vector3 (currentMidpoint.x,currentMidpoint.y,0);
+        var oldgeometry = line.geometry;
+        var newgeometry = new THREE.Geometry();
+        newgeometry.vertices = oldgeometry.vertices;
+        newgeometry.vertices.push (point);
+        line.geometry = newgeometry;
+        selected = line;
       }
     }
     else {
@@ -485,27 +547,56 @@ function render() {
         updateMeshes(myHands[0]);
       }
 
+
       for(let i = 0; i < myHands.length; i++) {
 
         // now estimate gestures based on landmarks
         // using a minimum confidence of 7.5 (out of 10)
         const est = GE.estimate(myHands[i].landmarks, 7.5);
-
+        
         if(est.gestures.length > 0) {
 
+          
           // find gesture with highest confidence
           let result = est.gestures.reduce((p, c) => { 
             return (p.confidence > c.confidence) ? p : c;
           });
           //resultLayer.innerText = gestureStrings[result.name];
-          if(result.name == "victory") {
-              console.log("victory");
+          
+          if(result.name == "victory" && stroke_color != 0x333CFF) {
               stroke_color = 0x333CFF;
-          } else if (result.name == "thumbs_up") {
-              console.log("thumbs up");
+              gestureFound = true;
+              colorString = "Color: BLUE";
+              
+          } else if (result.name == "thumbs_up" && stroke_color != 0x000000) {
               stroke_color = 0x000000;
-          }
+              colorString = "Color: BLACK";
+              gestureFound = true;
+          }    
         }
+      }
+      if (gestureFound) {  
+        gestureFound = false;
+        const geometry = loader.load( 'https://rawgit.com/mrdoob/three.js/dev/examples/fonts/helvetiker_regular.typeface.json', function(font) {
+          const geometry = new THREE.TextGeometry( colorString, {
+            font: font,
+            size: 20,
+            height: 5
+          } );
+          
+          const txtObj = new THREE.Mesh(
+            geometry,
+            new THREE.MeshBasicMaterial({ color: stroke_color})
+          );
+          
+          txtObj.position.x = 400;
+          txtObj.position.y = -100;
+          txtObj.position.z = 0;
+          txtObj.scale.x = -1;
+          //scene.remove(texts[texts.length-1]); // For continuous display of color string
+          texts.push(txtObj);
+          scene.add(txtObj);
+        });
       }
     });
 
@@ -547,9 +638,16 @@ function render() {
       }
     }
   }
-
+  
   // render the 3D scene!
   renderer.render(scene, camera);
+
+  // For temporary display of color string
+
+  if (loopCount == 50){
+    loopCount = 0;
+    scene.remove(texts[texts.length-1]);
+  }
 }
 
 render(); // kick off the rendering loop!

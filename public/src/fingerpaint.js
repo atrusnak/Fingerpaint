@@ -28,6 +28,11 @@ function Fingerpaint() {
   // })
 }
 
+Fingerpaint.prototype.showInfo = function(){
+  console.log("in showinfo()");
+  $("#myModal").modal('show');
+}
+
 window.onload = function() {
   window.app = new Fingerpaint();
 };

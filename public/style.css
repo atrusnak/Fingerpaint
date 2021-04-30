@@ -3,6 +3,18 @@
   padding-top: 2%;
 }
 
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
 #profile{
   margin-left: 5%;
   margin-right: 5%;
@@ -13,7 +25,7 @@
 }
 
 #finger{
-  color: black;
+  color:rgb(0, 0, 0);
   margin-left: 20%;
   margin-right: 20%;
 }
@@ -44,7 +56,6 @@
 .drawtable{
   margin-left: 0%;
   width: 110px;
-  background-color: #CC3385;
 }
 
 .iconify{
@@ -70,4 +81,16 @@ margin-bottom:-25%;
 }
 .form-group {
   margin-left: 10%;
+}
+
+#DrawMsg{
+  padding-left:10%;
+}
+
+#homeBody{
+  overflow: hidden;
+}
+
+#accountBody{
+  overflow: hidden;
 }

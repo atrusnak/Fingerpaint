@@ -21,107 +21,120 @@ var Drawings = function (_React$Component) {
         key: "render",
         value: function render() {
             return React.createElement(
-                "table",
-                { className: "table table-striped table-inverse table-responsive" },
-                React.createElement("thead", { className: "thead-inverse" }),
+                "div",
+                null,
                 React.createElement(
-                    "tbody",
-                    null,
+                    "table",
+                    { className: "table table-striped table-inverse table-responsive" },
                     React.createElement(
-                        "tr",
+                        "div",
                         null,
-                        React.createElement("td", { scope: "row" }),
                         React.createElement(
-                            "td",
-                            null,
-                            React.createElement(
-                                "a",
-                                { id: "profile", onClick: function onClick() {
-                                        return Fingerpaint.prototype.goToDraw();
-                                    } },
-                                React.createElement("img", { src: "draw1.jpg", width: "150", height: "150" })
-                            )
-                        ),
-                        React.createElement(
-                            "td",
-                            null,
-                            React.createElement(
-                                "a",
-                                { id: "profile", onClick: function onClick() {
-                                        return Fingerpaint.prototype.goToDraw();
-                                    } },
-                                React.createElement("img", { src: "draw2.jpg", width: "150", height: "150" })
-                            )
-                        ),
-                        React.createElement(
-                            "td",
-                            null,
-                            React.createElement(
-                                "a",
-                                { id: "profile", onClick: function onClick() {
-                                        return Fingerpaint.prototype.goToDraw();
-                                    } },
-                                React.createElement("img", { src: "draw3.jpg", width: "150", height: "150" })
-                            )
-                        ),
-                        React.createElement(
-                            "td",
-                            null,
-                            React.createElement(
-                                "a",
-                                { id: "profile", onClick: function onClick() {
-                                        return Fingerpaint.prototype.goToDraw();
-                                    } },
-                                React.createElement("img", { src: "draw4.jpg", width: "150", height: "150" })
-                            )
+                            "h1",
+                            { id: "DrawMsg" },
+                            "My Drawings"
                         )
                     ),
+                    React.createElement("thead", { className: "thead-inverse" }),
                     React.createElement(
-                        "tr",
+                        "tbody",
                         null,
-                        React.createElement("td", { scope: "row" }),
                         React.createElement(
-                            "td",
+                            "tr",
                             null,
+                            React.createElement("td", { scope: "row" }),
                             React.createElement(
-                                "a",
-                                { id: "profile", onClick: function onClick() {
-                                        return Fingerpaint.prototype.goToDraw();
-                                    } },
-                                React.createElement("img", { src: "draw4.jpg", width: "150", height: "150" })
+                                "td",
+                                null,
+                                React.createElement(
+                                    "a",
+                                    { id: "profile", onClick: function onClick() {
+                                            return Fingerpaint.prototype.goToDraw();
+                                        } },
+                                    React.createElement("img", { src: "draw1.jpg", width: "150", height: "150" })
+                                )
+                            ),
+                            React.createElement(
+                                "td",
+                                null,
+                                React.createElement(
+                                    "a",
+                                    { id: "profile", onClick: function onClick() {
+                                            return Fingerpaint.prototype.goToDraw();
+                                        } },
+                                    React.createElement("img", { src: "draw2.jpg", width: "150", height: "150" })
+                                )
+                            ),
+                            React.createElement(
+                                "td",
+                                null,
+                                React.createElement(
+                                    "a",
+                                    { id: "profile", onClick: function onClick() {
+                                            return Fingerpaint.prototype.goToDraw();
+                                        } },
+                                    React.createElement("img", { src: "draw3.jpg", width: "150", height: "150" })
+                                )
+                            ),
+                            React.createElement(
+                                "td",
+                                null,
+                                React.createElement(
+                                    "a",
+                                    { id: "profile", onClick: function onClick() {
+                                            return Fingerpaint.prototype.goToDraw();
+                                        } },
+                                    React.createElement("img", { src: "draw4.jpg", width: "150", height: "150" })
+                                )
                             )
                         ),
                         React.createElement(
-                            "td",
+                            "tr",
                             null,
+                            React.createElement("td", { scope: "row" }),
                             React.createElement(
-                                "a",
-                                { id: "profile", onClick: function onClick() {
-                                        return Fingerpaint.prototype.goToDraw();
-                                    } },
-                                React.createElement("img", { src: "draw3.jpg", width: "150", height: "150" })
-                            )
-                        ),
-                        React.createElement(
-                            "td",
-                            null,
+                                "td",
+                                null,
+                                React.createElement(
+                                    "a",
+                                    { id: "profile", onClick: function onClick() {
+                                            return Fingerpaint.prototype.goToDraw();
+                                        } },
+                                    React.createElement("img", { src: "draw4.jpg", width: "150", height: "150" })
+                                )
+                            ),
                             React.createElement(
-                                "a",
-                                { id: "profile", onClick: function onClick() {
-                                        return Fingerpaint.prototype.goToDraw();
-                                    } },
-                                React.createElement("img", { src: "draw2.jpg", width: "150", height: "150" })
-                            )
-                        ),
-                        React.createElement(
-                            "td",
-                            null,
+                                "td",
+                                null,
+                                React.createElement(
+                                    "a",
+                                    { id: "profile", onClick: function onClick() {
+                                            return Fingerpaint.prototype.goToDraw();
+                                        } },
+                                    React.createElement("img", { src: "draw3.jpg", width: "150", height: "150" })
+                                )
+                            ),
                             React.createElement(
-                                "a",
-                                { id: "profile", onClick: function onClick() {
-                                        return Fingerpaint.prototype.goToDraw();
-                                    } },
-                                React.createElement("img", { src: "draw1.jpg", width: "150", height: "150" })
+                                "td",
+                                null,
+                                React.createElement(
+                                    "a",
+                                    { id: "profile", onClick: function onClick() {
+                                            return Fingerpaint.prototype.goToDraw();
+                                        } },
+                                    React.createElement("img", { src: "draw2.jpg", width: "150", height: "150" })
+                                )
+                            ),
+                            React.createElement(
+                                "td",
+                                null,
+                                React.createElement(
+                                    "a",
+                                    { id: "profile", onClick: function onClick() {
+                                            return Fingerpaint.prototype.goToDraw();
+                                        } },
+                                    React.createElement("img", { src: "draw1.jpg", width: "150", height: "150" })
+                                )
                             )
                         )
                     )
