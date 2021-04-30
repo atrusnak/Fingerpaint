@@ -12,6 +12,6 @@ describe('Fingerpaint', () => {
       await page.type('#inputPassword','newpassword');
       await page.click('button', { text: 'Sign in' });
       await page.waitForNavigation();
-      await expect(page.title()).resolves.toMatch('Home');
+      await expect(page.title()).resolves.toMatch('Home View');
     });
   });
