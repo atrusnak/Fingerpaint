@@ -1,6 +1,6 @@
 describe('Fingerpaint', () => {
     beforeAll(async () => {
-      await page.goto('https://fingerpaint-7b504.web.app/index.html');
+      await page.goto('http://localhost:5002/index.html');
     });
   
     it('should be titled "Fingerpaint"', async () => {
@@ -14,6 +14,4 @@ describe('Fingerpaint', () => {
       await page.waitForNavigation();
       await expect(page.title()).resolves.toMatch('Home');
     });
-
-    
   });
