@@ -1,4 +1,4 @@
-describe('303', () => {
+describe('404', () => {
     beforeAll(async () => {
       await page.goto('http://localhost:5002/asdfasdfsdf');
     });
