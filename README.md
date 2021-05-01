@@ -11,5 +11,8 @@
 # To run individual test
 `npm test -- targetfiledir`
 
+# To run mocha test
+See the mocha branch
+
 The app is deployed at the following link:
 https://fingerpaint-7b504.web.app/
