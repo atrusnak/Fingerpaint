@@ -13,7 +13,7 @@ describe('Fingerpaint', () => {
       await page.click('button', { text: 'Sign in' });
       await page.waitForNavigation();
       await expect(page.title()).resolves.toMatch('Home View');
-    });
+    },10000);
 
     afterAll(() => { 
        page.close();
