@@ -6,9 +6,9 @@
 `firebase use --add` \
 `firebase emulators:start --only hosting`
 
-#To run tests 
+# To run tests 
 `npm run test`
-#To run individual test
+# To run individual test
 `npm test -- targetfiledir`
 
 The app is deployed at the following link:
