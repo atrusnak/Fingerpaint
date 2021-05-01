@@ -7,13 +7,17 @@ describe('Logout', () => {
     await page.click('button', { text: 'Sign in' });
     await page.waitForNavigation();
     await page.goto('http://localhost:5002/account.html');
-  },10000);
+  },30000);
 
   it('on logout title should be Fingerpaint', async ()=>{
 
       await page.waitForSelector('#logout');
       await page.click('#logout');
       await page.waitForNavigation();
-     await expect(page.title()).resolves.toMatch('Fingerpaint');
-  },10000);
+      await expect(page.title()).resolves.toMatch('Fingerpaint');
+  },30000);
+
+  afterAll(() => { 
+     page.close();
+  });
 });

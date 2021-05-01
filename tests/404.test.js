@@ -6,4 +6,8 @@ describe('303', () => {
     it('should be titled "Page Not Found"', async () => {
       await expect(page.title()).resolves.toMatch('Page Not Found');
     });
+
+    afterAll(() => { 
+     page.close();
+    });
   });

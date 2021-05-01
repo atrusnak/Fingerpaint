@@ -14,4 +14,8 @@ describe('Fingerpaint', () => {
       await page.waitForNavigation();
       await expect(page.title()).resolves.toMatch('Home View');
     });
+
+    afterAll(() => { 
+       page.close();
+    });
   });
